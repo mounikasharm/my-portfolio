@@ -90,7 +90,7 @@ function Navbar() {
       top: 70px;
       right: 20px;
       background: rgba(15,15,15,0.95);
-      width: 60%;
+      width: 0%;
       padding: 20px 22px;
       border-radius: 14px;
       display: flex;

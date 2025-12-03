@@ -1,119 +1,103 @@
-import { useState } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
+import React, { useState } from "react";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
 
-  const navStyle = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "20px 45px",
-    background: "linear-gradient(180deg, #020202, #090909, #050505)",
-    position: "sticky",
-    top: 0,
-    zIndex: 1500,
-    borderBottom: "1px solid rgba(255,255,255,0.1)",
-  };
+  const styles = {
+    nav: {
+      width: "100%",
+      padding: "20px 25px",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      position: "fixed",
+      top: 0,
+      background: "transparent",
+      zIndex: 1000,
+    },
+    logo: {
+      fontSize: "22px",
+      fontWeight: "600",
+      color: "#00A8FF",
+    },
+    navLinks: {
+      display: "flex",
+      gap: "25px",
+    },
+    link: {
+      color: "white",
+      textDecoration: "none",
+      fontSize: "15px",
+    },
 
-  const linkStyle = {
-    color: "white",
-    textDecoration: "none",
-    fontSize: "16px",
-    fontWeight: 600,
-    padding: "8px 14px",
+    /* Hamburger */
+    hamburger: {
+      display: "none",
+      flexDirection: "column",
+      gap: "5px",
+      cursor: "pointer",
+    },
+    bar: {
+      width: "25px",
+      height: "3px",
+      background: "white",
+    },
+
+    /* Mobile Menu */
+    mobileMenu: {
+      position: "absolute",
+      top: "70px",
+      right: "20px",
+      background: "#111",
+      padding: "15px",
+      borderRadius: "8px",
+      width: "160px",
+      display: open ? "flex" : "none",
+      flexDirection: "column",
+      gap: "12px",
+    },
+
+    /* MEDIA QUERY USING JAVASCRIPT */
+    hideOnMobile: {
+      display: window.innerWidth <= 768 ? "none" : "flex",
+      gap: "25px",
+    },
+    showHamburger: {
+      display: window.innerWidth <= 768 ? "flex" : "none",
+      flexDirection: "column",
+      gap: "5px",
+      cursor: "pointer",
+    },
   };
 
   return (
-    <nav style={navStyle}>
-      {/* LOGO */}
-      <h2 style={{ color: "#9ad8ff", fontWeight: 800, fontSize: "26px" }}>
-        Mounika M
-      </h2>
+    <nav style={styles.nav}>
+      <h2 style={styles.logo}>Mounika M</h2>
 
-      {/* DESKTOP MENU */}
-      <div className="desktop-menu" style={{ display: "flex", gap: "22px" }}>
-        {["Home", "About", "Projects", "Certificates", "Contact"].map((item) => (
-          <a key={item} href={`#${item.toLowerCase()}`} style={linkStyle}>
-            {item}
-          </a>
-        ))}
+      {/* Desktop Menu */}
+      <ul style={styles.hideOnMobile}>
+        <li><a style={styles.link} href="#home">Home</a></li>
+        <li><a style={styles.link} href="#about">About</a></li>
+        <li><a style={styles.link} href="#projects">Projects</a></li>
+        <li><a style={styles.link} href="#certificates">Certificates</a></li>
+        <li><a style={styles.link} href="#contact">Contact</a></li>
+      </ul>
+
+      {/* Hamburger */}
+      <div style={styles.showHamburger} onClick={() => setOpen(!open)}>
+        <span style={styles.bar}></span>
+        <span style={styles.bar}></span>
+        <span style={styles.bar}></span>
       </div>
 
-      {/* HAMBURGER ICON */}
-      <GiHamburgerMenu
-        className="mobile-icon"
-        size={28}
-        color="white"
-        style={{ display: "none", cursor: "pointer" }}
-        onClick={() => setOpen(!open)}
-      />
-
-      {/* MOBILE DROPDOWN */}
-      {open && (
-        <div className="mobile-menu">
-          {["Home", "About", "Projects", "Certificates", "Contact"].map(
-            (item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                style={linkStyle}
-                onClick={() => setOpen(false)}
-              >
-                {item}
-              </a>
-            )
-          )}
-        </div>
-      )}
-
-      <style>
-        {`
-          /* GLOBAL BACKGROUND */
-          body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(180deg, #050505, #0c0c0f);
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-          }
-
-          html {
-            scroll-behavior: smooth;
-          }
-
-          /* Mobile menu box */
-          .mobile-menu {
-            position: absolute;
-            top: 70px;
-            right: 20px;
-            background: #111;
-            padding: 18px;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            border: 1px solid rgba(255,255,255,0.08);
-          }
-
-          /* RESPONSIVE */
-          @media (max-width: 768px) {
-            .desktop-menu {
-              display: none !important;
-            }
-            .mobile-icon {
-              display: block !important;
-            }
-            nav {
-              padding: 14px 20px !important;
-            }
-            nav h2 {
-              font-size: 20px !important;
-            }
-          }
-        `}
-      </style>
+      {/* Mobile Menu */}
+      <ul style={styles.mobileMenu}>
+        <li><a style={styles.link} onClick={() => setOpen(false)} href="#home">Home</a></li>
+        <li><a style={styles.link} onClick={() => setOpen(false)} href="#about">About</a></li>
+        <li><a style={styles.link} onClick={() => setOpen(false)} href="#projects">Projects</a></li>
+        <li><a style={styles.link} onClick={() => setOpen(false)} href="#certificates">Certificates</a></li>
+        <li><a style={styles.link} onClick={() => setOpen(false)} href="#contact">Contact</a></li>
+      </ul>
     </nav>
   );
 }

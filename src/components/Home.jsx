@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-function Home() {
+export default function Home() {
   const typingRef = useRef(null);
 
   useEffect(() => {
@@ -24,11 +24,12 @@ function Home() {
         setTimeout(() => {
           charIndex = 0;
           index = (index + 1) % texts.length;
-        }, 800);
+        }, 600);
       }
 
-      setTimeout(type, 120);
+      setTimeout(type, 110);
     };
+
     type();
   }, []);
 
@@ -40,69 +41,77 @@ function Home() {
       width: "100%",
       background: "#000",
       color: "white",
-      padding: isMobile ? "40px 20px" : "80px 60px",
+      padding: isMobile ? "30px 18px" : "80px 50px",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      alignItems: "center",
-      textAlign: "center",
-      position: "relative",
-      overflow: "hidden",
+      alignItems: isMobile ? "center" : "left",
+      textAlign: isMobile ? "center" : "left",
+      animation: "fadeIn 1.4s ease-out",
     },
 
     title: {
-      fontSize: isMobile ? "36px" : "52px",
+      fontSize: isMobile ? "32px" : "52px",
       fontWeight: "800",
-      marginBottom: "12px",
-      letterSpacing: "1px",
+      lineHeight: isMobile ? "1.3" : "1.2",
+      marginBottom: "16px",
     },
 
     gradientName: {
-      background: "linear-gradient(90deg, #4fd1ff, #bb61ff)",
+      background: "linear-gradient(90deg,#4fd1ff,#bb61ff)",
       WebkitBackgroundClip: "text",
       color: "transparent",
+      display: "inline-block",
     },
 
     typing: {
-      fontSize: isMobile ? "20px" : "26px",
-      fontWeight: "600",
-      marginBottom: "20px",
+      fontSize: isMobile ? "18px" : "26px",
+      fontWeight: "700",
+      marginBottom: "18px",
       minHeight: "28px",
       color: "#4fd1ff",
+      animation: "slideUp 0.9s ease",
     },
 
     subtitle: {
-      maxWidth: "420px",
-      fontSize: isMobile ? "15px" : "17px",
-      lineHeight: "1.6",
+      maxWidth: "460px",
+      fontSize: isMobile ? "15px" : "18px",
+      lineHeight: "1.7",
       color: "#dcdcdc",
-      marginBottom: "30px",
+      marginBottom: "34px",
+      opacity: 0.9,
     },
 
     buttonWrapper: {
       display: "flex",
-      gap: "14px",
+      gap: isMobile ? "12px" : "18px",
+      flexDirection: isMobile ? "column" : "row",
+      width: isMobile ? "100%" : "auto",
       marginTop: "10px",
     },
 
     btnPrimary: {
-      padding: "12px 28px",
+      padding: "12px 30px",
       borderRadius: "30px",
       background: "linear-gradient(90deg,#4fd1ff,#bb61ff)",
       color: "#fff",
       fontWeight: "700",
       textDecoration: "none",
       fontSize: isMobile ? "15px" : "16px",
+      width: isMobile ? "100%" : "auto",
+      textAlign: "center",
     },
 
     btnOutline: {
-      padding: "12px 28px",
+      padding: "12px 30px",
       borderRadius: "30px",
       border: "2px solid #4fd1ff",
       color: "#4fd1ff",
       fontWeight: "700",
       textDecoration: "none",
       fontSize: isMobile ? "15px" : "16px",
+      width: isMobile ? "100%" : "auto",
+      textAlign: "center",
     },
   };
 
@@ -115,15 +124,27 @@ function Home() {
       <h2 ref={typingRef} style={styles.typing}></h2>
 
       <p style={styles.subtitle}>
-        I build fast, responsive and modern web applications using MERN stack.
+        I build fast, responsive, and modern web applications using MERN stack.
       </p>
 
       <div style={styles.buttonWrapper}>
         <a href="#projects" style={styles.btnPrimary}>Projects</a>
         <a href="#contact" style={styles.btnOutline}>Hire Me</a>
       </div>
+
+      <style>
+        {`
+          @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+
+          @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+        `}
+      </style>
     </section>
   );
 }
-
-export default Home;

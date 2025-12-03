@@ -6,20 +6,20 @@ export default function CertificatesSection() {
       title: "Internship Certificate",
       img: "/internship.png",
       institute: "XCEL Corp, Bangalore",
-      year: "2024"
+      year: "2024",
     },
     {
       title: "Python AI/ML Program",
       img: "/python.jpeg",
       institute: "Great Learning",
-      year: "2023"
+      year: "2023",
     },
     {
       title: "IBM Cloud Essentials",
       img: "/ibm.png",
       institute: "IBM SkillsBuild",
-      year: "2023"
-    }
+      year: "2023",
+    },
   ];
 
   const [previewImg, setPreviewImg] = useState(null);
@@ -28,7 +28,7 @@ export default function CertificatesSection() {
     <section
       id="certificates"
       style={{
-        padding: "90px 20px",
+        padding: "100px 20px",
         background: "linear-gradient(180deg, #020202, #090909, #050505)",
         color: "white",
         textAlign: "center",
@@ -42,8 +42,8 @@ export default function CertificatesSection() {
           WebkitBackgroundClip: "text",
           color: "transparent",
           animation: "fadeDown 1.2s ease",
-                    marginTop:'-50px'
-
+          marginTop: "-40px",
+          fontWeight: "800",
         }}
       >
         Certificates
@@ -51,11 +51,11 @@ export default function CertificatesSection() {
 
       <div
         style={{
-          maxWidth: "1100px",
+          maxWidth: "1150px",
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-          gap: 28,
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          gap: 30,
           animation: "fadeUp 1.4s ease",
         }}
       >
@@ -64,42 +64,45 @@ export default function CertificatesSection() {
             key={i}
             onClick={() => setPreviewImg(c.img)}
             style={{
-              padding: 18,
-              borderRadius: 16,
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.07)",
+              padding: 20,
+              borderRadius: 18,
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.15)",
               backdropFilter: "blur(10px)",
-              boxShadow: "0 15px 40px rgba(0,0,0,0.4)",
-              transition: "transform .35s ease, box-shadow .35s ease, border .35s ease",
+              boxShadow: "0 10px 40px rgba(0,0,0,0.5)",
               cursor: "pointer",
+              transition: "0.4s ease",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-10px) scale(1.03)";
-              e.currentTarget.style.boxShadow = "0 30px 80px rgba(0, 234, 255, 0.15)";
-              e.currentTarget.style.border = "1px solid rgba(0, 234, 255, 0.4)";
+              e.currentTarget.style.transform = "translateY(-12px) scale(1.05)";
+              e.currentTarget.style.border =
+                "1px solid rgba(0, 234, 255, 0.5)";
+              e.currentTarget.style.boxShadow =
+                "0 25px 80px rgba(0, 234, 255, 0.2)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = "translateY(0) scale(1)";
-              e.currentTarget.style.boxShadow = "0 15px 40px rgba(0,0,0,0.4)";
-              e.currentTarget.style.border = "1px solid rgba(255,255,255,0.07)";
+              e.currentTarget.style.border =
+                "1px solid rgba(255,255,255,0.15)";
+              e.currentTarget.style.boxShadow =
+                "0 15px 40px rgba(0,0,0,0.4)";
             }}
           >
             <img
               src={c.img}
               style={{
                 width: "100%",
-                height: "180px",
+                height: "190px",
                 objectFit: "cover",
-                objectPosition: "center",
                 borderRadius: 12,
-                transition: "transform .4s ease",
+                transition: "0.4s ease",
+                boxShadow: "0 6px 14px rgba(0,0,0,0.3)",
               }}
             />
 
-            {/* Title */}
             <h4
               style={{
-                marginTop: 10,
+                marginTop: 14,
                 fontSize: "1.15rem",
                 color: "#dff6ff",
               }}
@@ -107,7 +110,6 @@ export default function CertificatesSection() {
               {c.title}
             </h4>
 
-            {/* Institute */}
             <p
               style={{
                 margin: 0,
@@ -119,7 +121,6 @@ export default function CertificatesSection() {
               {c.institute}
             </p>
 
-            {/* Year */}
             <p
               style={{
                 marginTop: 4,
@@ -134,7 +135,7 @@ export default function CertificatesSection() {
         ))}
       </div>
 
-      {/* POPUP */}
+      {/* POPUP MODAL */}
       {previewImg && (
         <div
           onClick={() => setPreviewImg(null)}
@@ -145,22 +146,21 @@ export default function CertificatesSection() {
             width: "100vw",
             height: "100vh",
             background: "rgba(0,0,0,0.85)",
-            backdropFilter: "blur(8px)",
+            backdropFilter: "blur(10px)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            zIndex: 5000,
+            zIndex: 9000,
             animation: "fadeIn 0.4s ease",
           }}
         >
           <div
             style={{
               position: "relative",
-              padding: 10,
-              background: "rgba(255,255,255,0.04)",
-              borderRadius: 14,
-              border: "1px solid rgba(255,255,255,0.15)",
-              boxShadow: "0 25px 80px rgba(0,0,0,0.6)",
+              padding: 12,
+              borderRadius: 16,
+              background: "rgba(255,255,255,0.06)",
+              border: "1px solid rgba(255,255,255,0.2)",
               animation: "zoomIn 0.4s ease",
             }}
           >
@@ -168,17 +168,17 @@ export default function CertificatesSection() {
               onClick={() => setPreviewImg(null)}
               style={{
                 position: "absolute",
-                top: -15,
-                right: -15,
-                background: "rgba(255,255,255,0.15)",
-                backdropFilter: "blur(6px)",
-                border: "1px solid rgba(255,255,255,0.3)",
-                width: 40,
-                height: 40,
+                top: -18,
+                right: -18,
+                width: 42,
+                height: 42,
                 borderRadius: "50%",
-                fontSize: "18px",
+                background: "rgba(255,255,255,0.2)",
+                border: "1px solid rgba(255,255,255,0.4)",
                 cursor: "pointer",
                 color: "white",
+                fontSize: "18px",
+                backdropFilter: "blur(4px)",
               }}
             >
               ✕
@@ -187,35 +187,33 @@ export default function CertificatesSection() {
             <img
               src={previewImg}
               style={{
-                maxWidth: "90vw",
-                maxHeight: "80vh",
-                borderRadius: 10,
+                maxWidth: "92vw",
+                maxHeight: "82vh",
+                borderRadius: 12,
               }}
             />
           </div>
         </div>
       )}
 
-      <style>
-        {`
-          @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(40px); }
-            100% { opacity: 1; transform: translateY(0); }
-          }
-          @keyframes fadeDown {
-            0% { opacity: 0; transform: translateY(-30px); }
-            100% { opacity: 1; transform: translateY(0); }
-          }
-          @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-          }
-          @keyframes zoomIn {
-            0% { transform: scale(0.6); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-          }
-        `}
-      </style>
+      <style>{`
+        @keyframes fadeUp {
+          0% { opacity: 0; transform: translateY(40px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeDown {
+          0% { opacity: 0; transform: translateY(-30px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+          0% { transform: scale(0.7); opacity: 0; }
+          100% { transform: scale(1); opacity: 1; }
+        }
+      `}</style>
     </section>
   );
 }

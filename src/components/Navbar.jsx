@@ -8,12 +8,12 @@ function Navbar() {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "20px 45px",
-    background: "linear-gradient(180deg, #020202, #090909, #050505)",
+    padding: "16px 22px",
+    background: "rgba(0,0,0,0.7)",
+    backdropFilter: "blur(6px)",
     position: "sticky",
     top: 0,
-    zIndex: 1500,
-    borderBottom: "1px solid rgba(255,255,255,0.1)",
+    zIndex: 2000,
   };
 
   const linkStyle = {
@@ -21,19 +21,22 @@ function Navbar() {
     textDecoration: "none",
     fontSize: "16px",
     fontWeight: 600,
-    padding: "8px 14px",
   };
 
   return (
     <nav style={navStyle}>
-
       {/* LOGO */}
-      <h2 style={{ color: "#9ad8ff", fontWeight: 800, fontSize: "26px" }}>
-        Mounika M
+      <h2 style={{ 
+        color: "white",
+        fontWeight: 800,
+        fontSize: "24px",
+        letterSpacing: "1px"
+      }}>
+        Mounika
       </h2>
 
       {/* DESKTOP MENU */}
-      <div className="desktop-menu" style={{ display: "flex", gap: "22px" }}>
+      <div className="desktop-menu" style={{ display: "flex", gap: "28px" }}>
         {["Home", "About", "Projects", "Certificates", "Contact"].map((item) => (
           <a key={item} href={`#${item.toLowerCase()}`} style={linkStyle}>
             {item}
@@ -41,7 +44,7 @@ function Navbar() {
         ))}
       </div>
 
-      {/* HAMBURGER ICON */}
+      {/* HAMBURGER */}
       <GiHamburgerMenu
         className="mobile-icon"
         size={28}
@@ -50,9 +53,9 @@ function Navbar() {
         onClick={() => setOpen(!open)}
       />
 
-      {/* MOBILE DROPDOWN */}
+      {/* MOBILE MENU */}
       {open && (
-        <div className="mobile-menu">
+        <div className="mobile-menu animate-slide">
           {["Home", "About", "Projects", "Certificates", "Contact"].map(
             (item) => (
               <a
@@ -70,30 +73,40 @@ function Navbar() {
 
       <style>
         {`
-          /* Mobile menu */
+          /* Mobile dropdown */
           .mobile-menu {
             position: absolute;
-            top: 70px;
-            right: 20px;
-            background: #111;
-            padding: 18px;
-            border-radius: 10px;
+            top: 62px;
+            right: 16px;
+            background: #0d0d0d;
+            width: 70%;
+            padding: 18px 20px;
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            border: 1px solid rgba(255,255,255,0.08);
+            gap: 14px;
+            border: 1px solid rgba(255,255,255,0.06);
           }
 
-          /* MOBILE RESPONSIVE */
+          /* Slide animation */
+          @keyframes slideDown {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+          .animate-slide {
+            animation: slideDown 0.3s ease-out;
+          }
+
+          /* MOBILE VIEW */
           @media (max-width: 768px) {
             .desktop-menu {
-              display: none !important; /* hide big menu */
+              display: none !important;
             }
             .mobile-icon {
               display: block !important;
             }
             nav {
-              padding: 14px 20px !important;
+              padding: 14px 18px !important;
             }
             nav h2 {
               font-size: 20px !important;

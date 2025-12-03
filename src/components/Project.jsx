@@ -5,29 +5,26 @@ export default function ProjectsSection() {
     {
       title: "Village Community Hub",
       description:
-        "A digital platform for villagers to submit service requests and access community resources.",
-      live: "#",
-      code: "#",
-      image:
-        "https://via.placeholder.com/400x220.png?text=Village+Community+Hub",
+        "A digital platform for villagers to submit service requests, access community resources, and connect with officials.",
+      tech: ["React", "Django", "REST API", "Firebase Auth"],
     },
     {
       title: "Tele-Track CRM",
       description:
-        "Lead management CRM with call tracking, status updates, analytics, and JWT authentication.",
-      live: "#",
-      code: "#",
-      image:
-        "https://via.placeholder.com/400x220.png?text=Tele-Track+CRM",
+        "Lead management CRM with dashboards, call tracking, status updates, analytics, and JWT authentication.",
+      tech: ["React", "Node.js", "Express", "MongoDB", "JWT"],
     },
     {
       title: "BookLoop Marketplace",
       description:
-        "A platform to buy/sell books with image upload, WhatsApp chat, and category filtering.",
-      live: "#",
-      code: "#",
-      image:
-        "https://via.placeholder.com/400x220.png?text=BookLoop+Marketplace",
+        "A book selling marketplace with image preview, WhatsApp chat, category filtering, and user uploads.",
+      tech: ["Django", "Python", "HTML/CSS", "SQLite"],
+    },
+    {
+      title: "Personal Portfolio Website",
+      description:
+        "A fully animated modern portfolio with projects, certificates, footer animations and EmailJS contact form.",
+      tech: ["React", "EmailJS", "CSS Animations"],
     },
   ];
 
@@ -35,126 +32,117 @@ export default function ProjectsSection() {
     <section
       id="projects"
       style={{
-        background: "#0d0f15",
-        padding: "80px 20px",
+        padding: "90px 20px",
+        background: "#000",
         color: "white",
+        textAlign: "center",
       }}
     >
-      <h2
-        style={{
-          textAlign: "center",
-          fontSize: "2rem",
-          fontWeight: "700",
-          color: "#4fa3ff",
-          marginBottom: "40px",
-        }}
-      >
-        My Projects
-      </h2>
+      {/* Heading with line */}
+      <div style={{ marginBottom: 50 }}>
+        <h2
+          style={{
+            fontSize: "2.8rem",
+            fontWeight: "700",
+            marginBottom: 10,
+            color: "white",
+          }}
+        >
+          Projects
+        </h2>
+        <div
+          style={{
+            width: 80,
+            height: 4,
+            background:
+              "linear-gradient(90deg, #6fc9ff, #b36bff, #ff6bcb)",
+            margin: "0 auto",
+            borderRadius: 10,
+          }}
+        ></div>
+      </div>
 
-      {/* Cards Grid */}
+      {/* Project Cards */}
       <div
         style={{
           maxWidth: "1100px",
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "25px",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: 25,
         }}
       >
         {projects.map((p, index) => (
           <div
             key={index}
             style={{
-              background: "#1a1d27",
-              borderRadius: "14px",
-              overflow: "hidden",
-              boxShadow: "0 4px 18px rgba(0,0,0,0.4)",
+              padding: 25,
+              borderRadius: 18,
+              background: "rgba(255, 255, 255, 0.05)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              backdropFilter: "blur(12px)",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
               transition: "0.3s ease",
+              cursor: "pointer",
             }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "translateY(-8px)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.transform = "translateY(0)")
-            }
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-10px)";
+              e.currentTarget.style.boxShadow =
+                "0 20px 40px rgba(140, 75, 255, 0.35)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow =
+                "0 10px 30px rgba(0,0,0,0.4)";
+            }}
           >
-            {/* Image */}
-            <img
-              src={p.image}
-              alt={p.title}
+            <h3
               style={{
-                width: "100%",
-                height: "180px",
-                objectFit: "cover",
+                fontSize: "1.4rem",
+                marginBottom: 10,
+                background: "linear-gradient(90deg,#7df3ff,#cc7bff)",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
               }}
-            />
+            >
+              {p.title}
+            </h3>
 
-            {/* Details */}
-            <div style={{ padding: "18px" }}>
-              <h3
-                style={{
-                  fontSize: "1.2rem",
-                  fontWeight: "700",
-                  marginBottom: "8px",
-                }}
-              >
-                {p.title}
-              </h3>
+            <p style={{ color: "#d1e7ff", marginBottom: 15, lineHeight: "1.6" }}>
+              {p.description}
+            </p>
 
-              <p
-                style={{
-                  color: "#b8c2d4",
-                  fontSize: "0.9rem",
-                  lineHeight: "1.5",
-                  marginBottom: "15px",
-                }}
-              >
-                {p.description}
-              </p>
-
-              {/* Buttons */}
-              <div style={{ display: "flex", gap: "10px" }}>
-                <a
-                  href={p.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
+            <div style={{ marginTop: 10 }}>
+              {p.tech.map((t, i) => (
+                <span
+                  key={i}
                   style={{
-                    flex: 1,
-                    background: "#3c82ff",
-                    color: "white",
-                    padding: "8px",
-                    borderRadius: "6px",
-                    textAlign: "center",
-                    fontSize: "0.85rem",
-                    textDecoration: "none",
+                    display: "inline-block",
+                    padding: "6px 12px",
+                    marginRight: 6,
+                    marginTop: 8,
+                    fontSize: "0.8rem",
+                    borderRadius: 12,
+                    background: "rgba(255,255,255,0.07)",
+                    border: "1px solid rgba(255,255,255,0.15)",
                   }}
                 >
-                  🔗 View Live
-                </a>
-
-                <a
-                  href={p.code}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    flex: 1,
-                    background: "#2e2f36",
-                    color: "white",
-                    padding: "8px",
-                    borderRadius: "6px",
-                    textAlign: "center",
-                    fontSize: "0.85rem",
-                    textDecoration: "none",
-                  }}
-                >
-                  📄 View Code
-                </a>
-              </div>
+                  {t}
+                </span>
+              ))}
             </div>
           </div>
         ))}
       </div>
+
+      {/* Animation */}
+      <style>{`
+        @media (max-width: 500px) {
+          #projects h2 {
+            font-size: 2rem;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -34,15 +34,20 @@ function Home() {
 
   return (
     <section id="home" style={styles.section}>
-      {/* Glow backgrounds */}
+      {/* Glow */}
       <div style={styles.glowTop}></div>
       <div style={styles.glowBottom}></div>
 
-      {/* CONTENT */}
       <div style={styles.contentWrapper}>
         <h1 style={styles.title}>
           Hi, I'm{" "}
-          <span style={{ background: "linear-gradient(90deg,#4fd1ff,#bb61ff)", WebkitBackgroundClip: "text", color: "transparent" }}>
+          <span
+            style={{
+              background: "linear-gradient(90deg,#4fd1ff,#bb61ff)",
+              WebkitBackgroundClip: "text",
+              color: "transparent",
+            }}
+          >
             Mounika
           </span>
         </h1>
@@ -50,14 +55,50 @@ function Home() {
         <h2 ref={typingRef} style={styles.typing}></h2>
 
         <p style={styles.subtitle}>
-          I build fast, responsive and modern web applications using MERN stack.
+          I build fast, responsive and modern web applications using the MERN
+          stack.
         </p>
 
         <div style={styles.buttonRow}>
-          <a href="#projects" style={styles.btnPrimary}>Projects</a>
-          <a href="#contact" style={styles.btnOutline}>Hire Me</a>
+          <a href="#projects" style={styles.btnPrimary}>
+            Projects
+          </a>
+          <a href="#contact" style={styles.btnOutline}>
+            Hire Me
+          </a>
         </div>
       </div>
+
+      {/* Mobile Only Styling */}
+      <style>
+        {`
+        @media (max-width: 768px) {
+          #home {
+            padding-top: 90px !important;
+            padding-bottom: 70px !important;
+          }
+
+          #home h1 {
+            font-size: 36px !important;
+            line-height: 1.2 !important;
+          }
+
+          #home h2 {
+            font-size: 18px !important;
+          }
+
+          #home p {
+            font-size: 15px !important;
+            padding: 0 10px !important;
+          }
+
+          .button-row a {
+            font-size: 14px !important;
+            padding: 9px 20px !important;
+          }
+        }
+      `}
+      </style>
     </section>
   );
 }
@@ -65,56 +106,33 @@ function Home() {
 const styles = {
   section: {
     minHeight: "100vh",
-    width: "100%",
     background: "#000",
     color: "#fff",
-    position: "relative",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "0 18px",
+    padding: "0 22px",
     textAlign: "center",
+    position: "relative",
     overflow: "hidden",
-  },
-
-  glowTop: {
-    position: "absolute",
-    top: "-80px",
-    left: "-60px",
-    width: "180px",
-    height: "180px",
-    background: "rgba(0, 200, 255, 0.30)",
-    borderRadius: "50%",
-    filter: "blur(70px)",
-  },
-
-  glowBottom: {
-    position: "absolute",
-    bottom: "-100px",
-    right: "-60px",
-    width: "200px",
-    height: "200px",
-    background: "rgba(255, 0, 130, 0.25)",
-    borderRadius: "50%",
-    filter: "blur(80px)",
   },
 
   contentWrapper: {
     zIndex: 10,
+    maxWidth: "500px",
     animation: "fadeUp 1.2s ease",
-    maxWidth: "450px",
   },
 
   title: {
-    fontSize: "32px",
+    fontSize: "40px",
     fontWeight: "800",
-    marginBottom: "8px",
+    marginBottom: "10px",
   },
 
   typing: {
-    fontSize: "18px",
-    minHeight: "24px",
-    marginBottom: "16px",
+    fontSize: "20px",
+    minHeight: "26px",
+    marginBottom: "18px",
     fontWeight: "600",
     background: "linear-gradient(90deg,#4fd1ff,#bb61ff)",
     WebkitBackgroundClip: "text",
@@ -122,42 +140,60 @@ const styles = {
   },
 
   subtitle: {
-    fontSize: "14.5px",
-    lineHeight: "1.6",
-    color: "#e0e0e0",
-    margin: "0 auto 20px",
-    maxWidth: "360px",
+    fontSize: "16px",
+    lineHeight: "1.7",
+    color: "#d8d8d8",
+    marginBottom: "22px",
   },
 
   buttonRow: {
     display: "flex",
     justifyContent: "center",
-    gap: "12px",
-    marginTop: "10px",
+    gap: "14px",
   },
 
   btnPrimary: {
-    padding: "10px 22px",
+    padding: "12px 28px",
     background: "linear-gradient(90deg,#4fd1ff,#bb61ff)",
     color: "#fff",
-    borderRadius: "30px",
     fontWeight: "700",
     textDecoration: "none",
-    fontSize: "15px",
+    borderRadius: "30px",
   },
 
   btnOutline: {
-    padding: "10px 22px",
+    padding: "12px 28px",
     borderRadius: "30px",
     border: "2px solid #4fd1ff",
     color: "#4fd1ff",
     fontWeight: "700",
     textDecoration: "none",
-    fontSize: "15px",
+  },
+
+  glowTop: {
+    position: "absolute",
+    top: "-90px",
+    left: "-70px",
+    width: "220px",
+    height: "220px",
+    background: "rgba(0, 200, 255, 0.25)",
+    borderRadius: "50%",
+    filter: "blur(90px)",
+  },
+
+  glowBottom: {
+    position: "absolute",
+    bottom: "-100px",
+    right: "-70px",
+    width: "240px",
+    height: "240px",
+    background: "rgba(255, 0, 130, 0.25)",
+    borderRadius: "50%",
+    filter: "blur(90px)",
   },
 };
 
-/* Fade Animation */
+/* FadeUp Animation */
 const styleSheet = document.createElement("style");
 styleSheet.innerHTML = `
 @keyframes fadeUp {

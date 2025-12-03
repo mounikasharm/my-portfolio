@@ -87,7 +87,7 @@ function Navbar() {
             right: 16px;
             background: rgba(10,10,10,0.95);
             width: 78%;
-            padding: 10px 12px;
+            padding: 15px 15px;
             border-radius: 12px;
             display: flex;
             flex-direction: column;

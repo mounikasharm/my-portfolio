@@ -9,11 +9,12 @@ function Navbar() {
     justifyContent: "space-between",
     alignItems: "center",
     padding: "16px 22px",
-    background: "rgba(0,0,0,0.7)",
-    backdropFilter: "blur(6px)",
+    background: "rgba(0,0,0,0.55)",
+    backdropFilter: "blur(8px)",
     position: "sticky",
     top: 0,
     zIndex: 2000,
+    borderBottom: "1px solid rgba(255,255,255,0.05)",
   };
 
   const linkStyle = {
@@ -21,22 +22,28 @@ function Navbar() {
     textDecoration: "none",
     fontSize: "16px",
     fontWeight: 600,
+    letterSpacing: "0.5px",
   };
 
   return (
     <nav style={navStyle}>
       {/* LOGO */}
-      <h2 style={{ 
-        color: "white",
-        fontWeight: 800,
-        fontSize: "24px",
-        letterSpacing: "1px"
-      }}>
+      <h2
+        style={{
+          color: "white",
+          fontWeight: 800,
+          fontSize: "24px",
+          letterSpacing: "1px",
+        }}
+      >
         Mounika
       </h2>
 
       {/* DESKTOP MENU */}
-      <div className="desktop-menu" style={{ display: "flex", gap: "28px" }}>
+      <div
+        className="desktop-menu"
+        style={{ display: "flex", gap: "32px", alignItems: "center" }}
+      >
         {["Home", "About", "Projects", "Certificates", "Contact"].map((item) => (
           <a key={item} href={`#${item.toLowerCase()}`} style={linkStyle}>
             {item}
@@ -73,31 +80,31 @@ function Navbar() {
 
       <style>
         {`
-          /* Mobile dropdown */
+          /* Mobile menu container */
           .mobile-menu {
             position: absolute;
-            top: 62px;
+            top: 64px;
             right: 16px;
-            background: #0d0d0d;
-            width: 70%;
-            padding: 18px 20px;
+            background: rgba(10,10,10,0.95);
+            width: 78%;
+            padding: 22px 22px;
             border-radius: 12px;
             display: flex;
             flex-direction: column;
-            gap: 14px;
-            border: 1px solid rgba(255,255,255,0.06);
+            gap: 18px;
+            border: 1px solid rgba(255,255,255,0.07);
           }
 
-          /* Slide animation */
+          /* Animation */
           @keyframes slideDown {
-            0% { opacity: 0; transform: translateY(-10px); }
+            0% { opacity: 0; transform: translateY(-8px); }
             100% { opacity: 1; transform: translateY(0); }
           }
           .animate-slide {
-            animation: slideDown 0.3s ease-out;
+            animation: slideDown 0.28s ease-out;
           }
 
-          /* MOBILE VIEW */
+          /* MOBILE RESPONSIVE */
           @media (max-width: 768px) {
             .desktop-menu {
               display: none !important;
@@ -105,11 +112,13 @@ function Navbar() {
             .mobile-icon {
               display: block !important;
             }
-            nav {
-              padding: 14px 18px !important;
-            }
+
             nav h2 {
               font-size: 20px !important;
+            }
+
+            nav {
+              padding: 12px 18px !important;
             }
           }
         `}

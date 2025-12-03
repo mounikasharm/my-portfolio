@@ -13,8 +13,8 @@ function Navbar() {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: "0 16px",
-    background: "rgba(0,0,0,0.7)",
+    padding: "0 14px",
+    background: "rgba(0,0,0,0.6)",
     backdropFilter: "blur(12px)",
     zIndex: 9999,
   };
@@ -25,32 +25,37 @@ function Navbar() {
     fontSize: "16px",
     fontWeight: 600,
     padding: "8px 0",
-    display: "block",
     textAlign: "center",
+    display: "block",
   };
 
   return (
     <>
       <nav style={navStyle}>
-        <h2 style={{ color: "white", fontSize: "22px", fontWeight: 700 }}>
+        <h2 style={{ color: "white", fontSize: "20px", fontWeight: "700" }}>
           Mounika
         </h2>
-        <div className="desktop-menu" style={{ display: "flex", gap: "24px" }}>
+
+        {/* DESKTOP MENU */}
+        <div className="desktop-menu" style={{ display: "flex", gap: "25px" }}>
           {["Home", "About", "Projects", "Certificates", "Contact"].map((i) => (
             <a key={i} href={`#${i.toLowerCase()}`} style={linkStyle}>
               {i}
             </a>
           ))}
         </div>
+
+        {/* HAMBURGER ICON */}
         <GiHamburgerMenu
           className="mobile-icon"
-          size={26}
+          size={28}
           color="#fff"
           style={{ cursor: "pointer", display: "none" }}
           onClick={() => setOpen(!open)}
         />
       </nav>
 
+      {/* MOBILE MENU */}
       {open && (
         <div className="mobile-menu">
           {["Home", "About", "Projects", "Certificates", "Contact"].map((i) => (
@@ -66,26 +71,34 @@ function Navbar() {
         </div>
       )}
 
+      {/* CSS */}
       <style>{`
         body {
           margin: 0;
-          padding-top: 60px; /* so content sits below navbar */
+          padding-top: 60px;
         }
+
         .mobile-menu {
           position: fixed;
           top: 60px;
-          right: 0;
           left: 0;
-          background: rgba(0,0,0,0.9);
+          right: 0;
+          background: rgba(0,0,0,0.95);
+          padding: 20px 0;
           display: flex;
           flex-direction: column;
           gap: 16px;
-          padding: 20px;
           z-index: 9998;
         }
+
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
-          .desktop-menu { display: none !important; }
-          .mobile-icon { display: block !important; }
+          .desktop-menu {
+            display: none !important;
+          }
+          .mobile-icon {
+            display: block !important;
+          }
         }
       `}</style>
     </>

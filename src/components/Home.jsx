@@ -24,7 +24,7 @@ export default function Home() {
         setTimeout(() => {
           charIndex = 0;
           index = (index + 1) % texts.length;
-        }, 600);
+        }, 700);
       }
 
       setTimeout(type, 110);
@@ -39,59 +39,58 @@ export default function Home() {
     section: {
       minHeight: "100vh",
       width: "100%",
-      background: "#000",
+      padding: isMobile ? "80px 18px 40px" : "120px 60px",
+      background: "linear-gradient(to bottom, #000, #0a0a0a)",
       color: "white",
-      padding: isMobile ? "30px 18px" : "80px 50px",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      alignItems: isMobile ? "center" : "left",
+      alignItems: isMobile ? "center" : "flex-start",
       textAlign: isMobile ? "center" : "left",
-      animation: "fadeIn 1.4s ease-out",
+      animation: "fadeIn 1.2s ease-out",
     },
 
     title: {
-      fontSize: isMobile ? "32px" : "52px",
+      fontSize: isMobile ? "34px" : "54px",
       fontWeight: "800",
-      lineHeight: isMobile ? "1.3" : "1.2",
-      marginBottom: "16px",
+      lineHeight: isMobile ? "1.3" : "1.15",
+      marginBottom: "10px",
     },
 
     gradientName: {
-      background: "linear-gradient(90deg,#4fd1ff,#bb61ff)",
+      background: "linear-gradient(90deg,#4fd1ff,#bb61ff,#ff79c6)",
       WebkitBackgroundClip: "text",
       color: "transparent",
       display: "inline-block",
     },
 
     typing: {
-      fontSize: isMobile ? "18px" : "26px",
+      fontSize: isMobile ? "19px" : "26px",
       fontWeight: "700",
-      marginBottom: "18px",
-      minHeight: "28px",
+      marginBottom: "20px",
+      minHeight: "30px",
       color: "#4fd1ff",
-      animation: "slideUp 0.9s ease",
+      opacity: 0.9,
+      animation: "slideUp 0.8s ease",
     },
 
     subtitle: {
-      maxWidth: "460px",
+      maxWidth: "480px",
       fontSize: isMobile ? "15px" : "18px",
       lineHeight: "1.7",
-      color: "#dcdcdc",
-      marginBottom: "34px",
-      opacity: 0.9,
+      color: "#d3d3d3",
+      marginBottom: "38px",
     },
 
     buttonWrapper: {
       display: "flex",
-      gap: isMobile ? "12px" : "18px",
+      gap: isMobile ? "14px" : "18px",
       flexDirection: isMobile ? "column" : "row",
       width: isMobile ? "100%" : "auto",
-      marginTop: "10px",
     },
 
     btnPrimary: {
-      padding: "12px 30px",
+      padding: "12px 34px",
       borderRadius: "30px",
       background: "linear-gradient(90deg,#4fd1ff,#bb61ff)",
       color: "#fff",
@@ -100,10 +99,12 @@ export default function Home() {
       fontSize: isMobile ? "15px" : "16px",
       width: isMobile ? "100%" : "auto",
       textAlign: "center",
+      boxShadow: "0 0 12px rgba(79,209,255,0.4)",
+      transition: "0.2s",
     },
 
     btnOutline: {
-      padding: "12px 30px",
+      padding: "12px 34px",
       borderRadius: "30px",
       border: "2px solid #4fd1ff",
       color: "#4fd1ff",
@@ -112,6 +113,7 @@ export default function Home() {
       fontSize: isMobile ? "15px" : "16px",
       width: isMobile ? "100%" : "auto",
       textAlign: "center",
+      transition: "0.2s",
     },
   };
 
@@ -124,18 +126,18 @@ export default function Home() {
       <h2 ref={typingRef} style={styles.typing}></h2>
 
       <p style={styles.subtitle}>
-        I build fast, responsive, and modern web applications using MERN stack.
+        I build modern, responsive and high-performance MERN stack applications.
       </p>
 
       <div style={styles.buttonWrapper}>
-        <a href="#projects" style={styles.btnPrimary}>Projects</a>
+        <a href="#projects" style={styles.btnPrimary}>View Projects</a>
         <a href="#contact" style={styles.btnOutline}>Hire Me</a>
       </div>
 
       <style>
         {`
           @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
+            0% { opacity: 0; transform: translateY(25px); }
             100% { opacity: 1; transform: translateY(0); }
           }
 

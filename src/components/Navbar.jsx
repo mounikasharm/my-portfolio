@@ -8,7 +8,7 @@ function Navbar() {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "16px 24px",
+    padding: "12px 16px", // FIXED SPACING FOR MOBILE
     background: "rgba(0,0,0,0.45)",
     backdropFilter: "blur(10px)",
     position: "fixed",
@@ -55,7 +55,7 @@ function Navbar() {
         ))}
       </div>
 
-      {/* HAMBURGER */}
+      {/* HAMBURGER ICON */}
       <GiHamburgerMenu
         className="mobile-icon"
         size={30}
@@ -82,54 +82,54 @@ function Navbar() {
         </div>
       )}
 
-    <style>
-  {`
-    /* Mobile menu container */
-    .mobile-menu {
-      position: fixed;
-      top: 70px;
-      right: 20px;
-      background: rgba(15,15,15,0.95);
-      width: 0%;
-      padding: 20px 22px;
-      border-radius: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-    }
+      {/* STYLES */}
+      <style>
+        {`
+          /* Mobile menu container */
+          .mobile-menu {
+            position: fixed;
+            top: 65px;
+            right: 12px;
+            background: rgba(15,15,15,0.95);
+            width: 70%;
+            padding: 22px 22px;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+          }
 
-    /* Animation */
-    @keyframes slideDown {
-      0% { opacity: 0; transform: translateY(-10px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .animate-slide {
-      animation: slideDown 0.3s ease-out;
-    }
+          /* Animation */
+          @keyframes slideDown {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+          .animate-slide {
+            animation: slideDown 0.28s ease-out;
+          }
 
-    /* MOBILE RESPONSIVE */
-    @media (max-width: 768px) {
-      .desktop-menu {
-        display: none !important;
-      }
-      .mobile-icon {
-        display: block !important;
-      }
+          /* MOBILE RESPONSIVE */
+          @media (max-width: 768px) {
+            .desktop-menu {
+              display: none !important;
+            }
+            .mobile-icon {
+              display: block !important;
+            }
 
-      nav h2 {
-        font-size: 22px !important;
-      }
+            nav h2 {
+              font-size: 20px !important;
+            }
 
-      nav {
-        padding: 14px 20px !important;
-      }
-    }
-  `}
-</style>
-
+            nav {
+              padding: 10px 16px !important;
+            }
+          }
+        `}
+      </style>
     </nav>
   );
 }

@@ -63,7 +63,7 @@ function Home() {
       <h2 ref={typingRef} style={styles.typing}></h2>
 
       <p style={styles.subtitle}>
-        I build modern, responsive and interactive web applications............
+        I build modern, responsive and interactive web applications.
       </p>
 
       <div style={styles.buttonContainer}>

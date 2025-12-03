@@ -1,90 +1,116 @@
+import { useState } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+
 function Navbar() {
+  const [open, setOpen] = useState(false);
+
   const navStyle = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     padding: "20px 45px",
-    background: "linear-gradient(180deg, #020202, #090909, #050505)",   // SAME AS HOME BG
-    borderBottom: "1px solid rgba(255,255,255,0.08)",
+    background: "linear-gradient(180deg, #020202, #090909, #050505)",
     position: "sticky",
     top: 0,
     zIndex: 1500,
-    animation: "slideDown 0.9s ease",
-  };
-
-  const logoStyle = {
-    color: "#9ad8ff",
-    fontSize: "26px",
-    fontWeight: 800,
-    letterSpacing: "1px",
-    cursor: "pointer",
-    textShadow: "0 0 18px rgba(0,234,255,0.4)",
-    transition: "0.3s ease",
+    borderBottom: "1px solid rgba(255,255,255,0.1)",
   };
 
   const linkStyle = {
-    position: "relative",
-    color: "#dff6ff",
+    color: "white",
     textDecoration: "none",
     fontSize: "16px",
     fontWeight: 600,
     padding: "8px 14px",
-    borderRadius: "10px",
-    transition: "0.3s ease",
   };
 
   return (
     <nav style={navStyle}>
-      <h2
-        style={logoStyle}
-        onMouseEnter={(e) => (e.target.style.transform = "scale(1.08)")}
-        onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
-      >
+      {/* LOGO */}
+      <h2 style={{ color: "#9ad8ff", fontWeight: 800, fontSize: "26px" }}>
         Mounika M
       </h2>
 
-      <div style={{ display: "flex", gap: "22px" }}>
+      {/* DESKTOP MENU */}
+      <div className="desktop-menu" style={{ display: "flex", gap: "22px" }}>
         {["Home", "About", "Projects", "Certificates", "Contact"].map((item) => (
-          <a
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            style={linkStyle}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "#ffffff";
-              e.currentTarget.style.transform = "translateY(-4px)";
-              e.currentTarget.style.setProperty("--underlineWidth", "100%");
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "#dff6ff";
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.setProperty("--underlineWidth", "0%");
-            }}
-          >
+          <a key={item} href={`#${item.toLowerCase()}`} style={linkStyle}>
             {item}
-
-            <span
-              style={{
-                content: "",
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                height: "3px",
-                width: "var(--underlineWidth, 0%)",
-                background: "linear-gradient(90deg,#00eaff,#ff4dff,#00eaff)",
-                borderRadius: "10px",
-                transition: "width .35s ease",
-                boxShadow: "0 0 8px #00eaff88",
-              }}
-            ></span>
           </a>
         ))}
       </div>
 
+      {/* HAMBURGER ICON */}
+      <GiHamburgerMenu
+        className="mobile-icon"
+        size={28}
+        color="white"
+        style={{ display: "none", cursor: "pointer" }}
+        onClick={() => setOpen(!open)}
+      />
+
+      {/* MOBILE DROPDOWN */}
+      {open && (
+        <div className="mobile-menu">
+          {["Home", "About", "Projects", "Certificates", "Contact"].map(
+            (item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                style={linkStyle}
+                onClick={() => setOpen(false)}
+              >
+                {item}
+              </a>
+            )
+          )}
+        </div>
+      )}
+
       <style>
         {`
-          @keyframes slideDown {
-            0% { opacity: 0; transform: translateY(-40px); }
-            100% { opacity: 1; transform: translateY(0); }
+          /* GLOBAL BACKGROUND */
+          body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(180deg, #050505, #0c0c0f);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+          }
+
+          html {
+            scroll-behavior: smooth;
+          }
+
+          /* Mobile menu box */
+          .mobile-menu {
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background: #111;
+            padding: 18px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+          }
+
+          /* RESPONSIVE */
+          @media (max-width: 768px) {
+            .desktop-menu {
+              display: none !important;
+            }
+            .mobile-icon {
+              display: block !important;
+            }
+            nav {
+              padding: 14px 20px !important;
+            }
+            nav h2 {
+              font-size: 20px !important;
+            }
           }
         `}
       </style>

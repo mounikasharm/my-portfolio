@@ -1,182 +1,165 @@
 import React, { useEffect, useRef } from "react";
-import { FaReact, FaNodeJs, FaGithub } from "react-icons/fa";
-import { SiJavascript, SiMongodb, SiExpress } from "react-icons/si";
 
-export default function HomeSection() {
+function Home() {
   const typingRef = useRef(null);
 
+  // Typing Effect
   useEffect(() => {
-    const titles = [
-      "Full Stack Developer",
-      "Python Developer ",
+    const texts = [
       "MERN Stack Developer",
-      "React.js Developer",
-      "Node.js Backend Developer",
+      "React.js Enthusiast",
+      "Node.js Backend Builder",
+      "MongoDB & Express.js Developer",
     ];
 
     let index = 0;
-    let char = 0;
-    let timeout;
+    let charIndex = 0;
 
     const type = () => {
-      timeout = setTimeout(() => {
-        if (char < titles[index].length) {
-          typingRef.current.textContent += titles[index][char];
-          char++;
-          type();
-        } else {
-          erase();
-        }
-      }, 100);
-    };
+      if (typingRef.current) {
+        typingRef.current.textContent = texts[index].slice(0, charIndex);
+      }
 
-    const erase = () => {
-      timeout = setTimeout(() => {
-        if (char > 0) {
-          typingRef.current.textContent = titles[index].substring(0, char - 1);
-          char--;
-          erase();
-        } else {
-          index = (index + 1) % titles.length;
-          type();
-        }
-      }, 40);
+      charIndex++;
+
+      if (charIndex > texts[index].length) {
+        setTimeout(() => {
+          charIndex = 0;
+          index = (index + 1) % texts.length;
+        }, 900);
+      }
+
+      setTimeout(type, 130);
     };
 
     type();
-    return () => clearTimeout(timeout);
   }, []);
 
   return (
     <section
       id="home"
       style={{
-        height: "100vh",
-        background: "linear-gradient(180deg, #020202, #090909, #050505)",
+        minHeight: "100vh",
+        background: "linear-gradient(180deg, #020202, #0a0a0a, #050505)",
         color: "white",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        position: "relative",
         textAlign: "center",
+        padding: "0px 20px",
+        paddingTop: "20px",
+        position: "relative",
         overflow: "hidden",
+        animation: "fadeIn 1.2s ease-out",
       }}
     >
-      {/* 🌈 GLOWING BACKGROUND ORBS */}
-      <div className="glow orb1"></div>
-      <div className="glow orb2"></div>
+      {/* Glow Background Animation Circles */}
+      <div style={styles.circle1}></div>
+      <div style={styles.circle2}></div>
+      <div style={styles.circle3}></div>
 
-      {/* MAIN TITLE */}
-      <h1
-        style={{
-          fontSize: "4rem",
-          fontWeight: "800",
-          background: "linear-gradient(90deg,#00eaff,#e700ff)",
-          WebkitBackgroundClip: "text",
-          color: "transparent",
-          textShadow: "0 0 25px rgba(0,234,255,0.4)",
-          animation: "fadeDown 1.2s ease",
-        }}
-      >
-        Hi, I'm <span style={{ color: "#9ae8ff" }}>Mounika M</span>
+      <h1 style={styles.heading}>
+        Hi, I'm <span style={{ color: "#00c6ff" }}>Mounika</span>
       </h1>
 
-      {/* TYPING EFFECT */}
-      <h2
-        ref={typingRef}
-        style={{
-          fontSize: "2.2rem",
-          marginTop: "10px",
-          height: "45px",
-          letterSpacing: "1px",
-          animation: "fadeIn 1.8s ease",
-        }}
-      ></h2>
+      <h2 ref={typingRef} style={styles.typing}></h2>
 
-      {/* TAGLINE */}
-      <p
-        style={{
-          marginTop: "12px",
-          fontSize: "1.2rem",
-          opacity: 0.85,
-          maxWidth: "620px",
-          animation: "fadeUp 2s ease",
-        }}
-      >
-        I build modern, interactive, fast, and visually stunning web applications
-        with MERN Stack + React animations.
+      <p style={styles.subtitle}>
+        I build modern, responsive and interactive web applications.
       </p>
 
-      {/* FLOATING TECH ICONS */}
-      <div className="floating-icons">
-        <FaReact style={{ color: "#61DBFB" }} className="float-icon react" />
-        <FaNodeJs style={{ color: "#77dd66" }} className="float-icon node" />
-        <SiJavascript style={{ color: "#F7E018" }} className="float-icon js" />
-        <SiMongodb style={{ color: "#4FAA41" }} className="float-icon mongo" />
-        <FaGithub style={{ color: "#ffffff" }} className="float-icon git" />
-        <SiExpress style={{ color: "#cccccc" }} className="float-icon express" />
+      <div style={styles.buttonContainer}>
+        <a href="#projects" style={styles.primaryBtn}>My Projects</a>
+        <a href="#contact" style={styles.secondaryBtn}>Hire Me</a>
       </div>
-
-      {/* CSS */}
-      <style>
-        {`
-          /* Floating Glow Orbs */
-          .glow {
-            position: absolute;
-            width: 380px;
-            height: 380px;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.35;
-            animation: pulse 6s infinite alternate;
-          }
-          .orb1 { background: #00eaff; top: 10%; left: 10%; }
-          .orb2 { background: #ff3cff; bottom: 10%; right: 10%; }
-
-          /* Floating Icons */
-          .float-icon {
-            position: absolute;
-            font-size: 3rem;
-            opacity: 0.15;
-            animation: float 6s ease-in-out infinite;
-          }
-          .react { top: 18%; left: 8%; animation-delay: 0.2s; }
-          .node { top: 32%; right: 10%; animation-delay: 0.4s; }
-          .js { bottom: 20%; left: 14%; animation-delay: 0.6s; }
-          .mongo { top: 60%; right: 15%; animation-delay: 0.8s; }
-          .git { bottom: 16%; right: 10%; animation-delay: 1s; }
-          .express { top: 74%; left: 12%; animation-delay: 1.2s; }
-
-          @keyframes float {
-            0% { transform: translateY(0px); opacity: 0.15; }
-            50% { transform: translateY(-18px); opacity: 0.28; }
-            100% { transform: translateY(0px); opacity: 0.15; }
-          }
-
-          /* Background Animations */
-          @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.2); }
-          }
-
-          @keyframes fadeDown {
-            0% { opacity: 0; transform: translateY(-40px); }
-            100% { opacity: 1; transform: translateY(0); }
-          }
-
-          @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(40px); }
-            100% { opacity: 1; transform: translateY(0); }
-          }
-
-          @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-          }
-
-        `}
-      </style>
     </section>
   );
 }
+
+const styles = {
+  heading: {
+    fontSize: "36px",
+    fontWeight: "800",
+    letterSpacing: "1px",
+    marginBottom: "8px",
+  },
+
+  typing: {
+    fontSize: "20px",
+    color: "#00c6ff",
+    height: "28px",
+    marginBottom: "18px",
+  },
+
+  subtitle: {
+    maxWidth: "480px",
+    fontSize: "16px",
+    lineHeight: "1.5",
+    color: "#cccccc",
+    marginBottom: "25px",
+  },
+
+  buttonContainer: {
+    display: "flex",
+    gap: "14px",
+    marginTop: "5px",
+  },
+
+  primaryBtn: {
+    padding: "10px 22px",
+    background: "#00c6ff",
+    color: "black",
+    borderRadius: "6px",
+    textDecoration: "none",
+    fontWeight: "700",
+    transition: "0.3s",
+  },
+
+  secondaryBtn: {
+    padding: "10px 22px",
+    border: "2px solid #00c6ff",
+    color: "white",
+    borderRadius: "6px",
+    textDecoration: "none",
+    fontWeight: "700",
+    transition: "0.3s",
+  },
+
+  // Background Blur Lights
+  circle1: {
+    width: "220px",
+    height: "220px",
+    borderRadius: "50%",
+    background: "rgba(0, 198, 255, 0.22)",
+    position: "absolute",
+    top: "-40px",
+    left: "-40px",
+    filter: "blur(45px)",
+    animation: "pulse 6s infinite ease-in-out",
+  },
+  circle2: {
+    width: "200px",
+    height: "200px",
+    borderRadius: "50%",
+    background: "rgba(255, 0, 128, 0.22)",
+    position: "absolute",
+    bottom: "-30px",
+    right: "-30px",
+    filter: "blur(45px)",
+    animation: "pulse 7s infinite ease-in-out",
+  },
+  circle3: {
+    width: "150px",
+    height: "150px",
+    borderRadius: "50%",
+    background: "rgba(255, 255, 255, 0.08)",
+    position: "absolute",
+    top: "40%",
+    left: "60%",
+    filter: "blur(60px)",
+    animation: "pulse 8s infinite ease-in-out",
+  },
+};
+
+export default Home;

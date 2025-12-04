@@ -19,7 +19,7 @@ export default function AboutSection() {
 
     leftImageBox: {
       width: "280px",
-      height: "280px",
+      height: "200px",
       borderRadius: "50%",
       border: "5px solid #1f4fff",
       padding: "4px",
@@ -31,7 +31,7 @@ export default function AboutSection() {
 
     profileImage: {
       width: "100%",
-      height: "70%",
+      height: "100%",
       borderRadius: "50%",
       objectFit: "cover",
     },

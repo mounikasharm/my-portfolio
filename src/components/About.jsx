@@ -2,7 +2,7 @@ import React from "react";
 
 export default function AboutSection() {
   const isMobile = window.innerWidth <= 768;
-  const imageSize = isMobile ? "260px" : "320px"; // increased size
+  const imageSize = isMobile ? "220px" : "280px";
 
   const styles = {
     section: {
@@ -17,30 +17,27 @@ export default function AboutSection() {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      gap: "50px",
+      gap: "40px",
     },
 
-    /* --- PROFILE IMAGE CIRCLE --- */
+    /* ---- SIMPLE PERFECT CIRCLE IMAGE ---- */
     leftImageBox: {
       width: imageSize,
       height: imageSize,
       borderRadius: "50%",
       border: "5px solid #1f4fff",
-      background: "transparent",
+      overflow: "hidden",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      overflow: "hidden",
+      background: "#000", // no visible block
     },
 
     profileImage: {
-      width: "115%",      // zoomed out slightly to show more face
-      height: "115%",
-      borderRadius: "50%",
+      width: "100%",
+      height: "100%",
       objectFit: "cover",
-
-      objectPosition: "center -20px", 
-      // 👆 moves image upward to avoid cropping chin
+      objectPosition: "center",
     },
 
     heading: {

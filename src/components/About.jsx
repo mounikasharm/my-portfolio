@@ -30,8 +30,8 @@ export default function AboutSection() {
     },
 
     profileImage: {
-      width: "50%",
-      height: "50%",
+      width: "150%",
+      height: "150%",
       borderRadius: "50%",
       objectFit: "cover",
     },

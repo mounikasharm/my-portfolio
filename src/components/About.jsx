@@ -26,7 +26,6 @@ export default function AboutSection() {
   borderRadius: "50%",
   border: "5px solid #1f4fff",
   padding: "2px", // smaller padding = cleaner circle
-  background: "linear-gradient(180deg, #4cbfff, #b36bff)",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -44,6 +43,7 @@ export default function AboutSection() {
       fontSize: "40px",
       fontWeight: "800",
       marginBottom: "15px",
+      background: "linear-gradient(90deg, #7ef0ff, #ba7bff)",
       WebkitBackgroundClip: "text",
       color: "transparent",
     },

@@ -78,8 +78,7 @@ export default function HomeSection() {
 
       {/* Tagline */}
       <p className="home-tagline">
-        I build modern, interactive, fast, and visually stunning web applications
-        with MERN Stack + React animations......
+        Building clean UIs and efficient backend logic using React, Node.js, and Python.
       </p>
 
       {/* Floating Tech Icons */}

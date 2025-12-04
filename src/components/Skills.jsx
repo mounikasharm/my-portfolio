@@ -2,54 +2,60 @@ import React from "react";
 import {
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGithub,
 } from "react-icons/fa";
-import { SiMongodb, SiExpress, SiDjango, SiPython, SiPostman, SiFirebase, SiPostgresql, SiSqlite } from "react-icons/si";
+import {
+  SiMongodb, SiExpress, SiDjango, SiPython,
+  SiPostman, SiFirebase, SiPostgresql, SiSqlite
+} from "react-icons/si";
 
 export default function SkillsSection() {
   const styles = {
     section: {
       padding: "90px 20px",
-      background: "linear-gradient(180deg, #050505, #0a0a0d)",
+      background: "linear-gradient(180deg, #050505, #070708, #0b0b0f)",
       color: "white",
       textAlign: "center",
+      overflow: "hidden",
     },
 
     heading: {
-      fontSize: "42px",
+      fontSize: "40px",
       fontWeight: "800",
       background: "linear-gradient(90deg,#00eaff,#ff00ff)",
       WebkitBackgroundClip: "text",
       color: "transparent",
-      marginBottom: "40px",
-      marginTop:'-50px'
+      marginBottom: "45px",
+      animation: "fadeDown 1s ease",
     },
 
     grid: {
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-      gap: "25px",
+      gridTemplateColumns: "repeat(auto-fit, minmax(135px, 1fr))",
+      gap: "22px",
       maxWidth: "1100px",
       margin: "0 auto",
-      animation: "fadeUp 1s ease",
+      paddingBottom: "30px",
     },
 
     card: {
       background: "rgba(255,255,255,0.06)",
-      padding: "25px 20px",
-      borderRadius: "16px",
-      border: "1px solid rgba(255,255,255,0.12)",
+      padding: "22px 15px",
+      borderRadius: "14px",
+      border: "1px solid rgba(255,255,255,0.1)",
       backdropFilter: "blur(10px)",
-      transition: "0.4s ease",
+      transition: "0.35s ease",
       cursor: "pointer",
+      transform: "translateY(0)",
+      animation: "floatUp 1s ease",
     },
 
     icon: {
-      fontSize: "45px",
-      marginBottom: "12px",
-      transition: "0.4s ease",
+      fontSize: "42px",
+      marginBottom: "10px",
+      transition: "0.3s ease",
     },
 
     label: {
-      fontSize: "18px",
+      fontSize: "16px",
       fontWeight: "600",
       letterSpacing: "0.5px",
     },
@@ -82,20 +88,15 @@ export default function SkillsSection() {
             key={skill.name}
             style={styles.card}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-10px) scale(1.05)";
-              e.currentTarget.style.boxShadow = `0 0 25px ${skill.color}55`;
+              e.currentTarget.style.transform = "translateY(-8px) scale(1.06)";
+              e.currentTarget.style.boxShadow = `0 0 20px ${skill.color}44`;
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = "translateY(0) scale(1)";
               e.currentTarget.style.boxShadow = "none";
             }}
           >
-            <div
-              style={{
-                ...styles.icon,
-                color: skill.color,
-              }}
-            >
+            <div style={{ ...styles.icon, color: skill.color }}>
               {skill.icon}
             </div>
             <p style={styles.label}>{skill.name}</p>
@@ -105,11 +106,27 @@ export default function SkillsSection() {
 
       <style>
         {`
-        @keyframes fadeUp {
-          0% { opacity: 0; transform: translateY(40px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-      `}
+          /* Fade & Float Animations */
+          @keyframes fadeDown {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+
+          @keyframes floatUp {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+
+          /* Mobile Optimization */
+          @media (max-width: 768px) {
+            #skills h2 {
+              font-size: 32px !important;
+            }
+            #skills div {
+              animation-duration: 0.8s !important;
+            }
+          }
+        `}
       </style>
     </section>
   );

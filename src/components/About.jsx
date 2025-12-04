@@ -33,21 +33,23 @@ export default function AboutSection() {
       flexDirection: "column",
       alignItems: "center",
       textAlign: "center",
-      gap: "40px",
+      gap: "35px",
       opacity: 0,
       animation: "fadeIn 1.3s ease forwards",
     },
 
+    /* ⭐ UPDATED — MOBILE OPTIMIZED IMAGE BOX */
     leftImageBox: {
-      width: "280px",
-      height: "330px",
-      borderRadius: "20px",
+      width: isMobile ? "200px" : "280px",
+      height: isMobile ? "230px" : "330px",
+      borderRadius: "18px",
       padding: "6px",
       background: "linear-gradient(135deg, #4cbfff, #b36bff)",
-      boxShadow: "0 0 25px rgba(105,85,255,0.4)",
+      boxShadow: "0 0 20px rgba(105,85,255,0.35)",
       animation: "floatUpDown 3s ease-in-out infinite",
     },
 
+    /* ⭐ UPDATED — MOBILE OPTIMIZED IMAGE */
     profileImage: {
       width: "100%",
       height: "100%",
@@ -66,9 +68,9 @@ export default function AboutSection() {
 
     textBlock: {
       fontSize: "17px",
-      lineHeight: "1.8",
+      lineHeight: "1.7",
       color: "#d9e7ff",
-      marginBottom: "18px",
+      marginBottom: "16px",
       animation: "fadeSlide 1.2s ease",
     },
 
@@ -102,7 +104,7 @@ export default function AboutSection() {
       }
       @keyframes floatUpDown {
         0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-12px); }
+        50% { transform: translateY(-10px); }
       }
     `,
   };
@@ -113,7 +115,7 @@ export default function AboutSection() {
 
       <section id="about" style={styles.section}>
         <div style={isMobile ? styles.mobile : styles.container}>
-          
+
           {/* LEFT IMAGE */}
           <div style={styles.leftImageBox}>
             <img src="/profile.jpeg" alt="Mounika" style={styles.profileImage} />
@@ -124,39 +126,40 @@ export default function AboutSection() {
             <h2 style={styles.heading}>About Me</h2>
 
             <p style={styles.textBlock}>
-              Hello! I’m <strong>Mounika</strong>, a passionate 
-              <span style={styles.bullet}> Full Stack Developer</span> skilled in 
+              Hello! I’m <strong>Mounika</strong>, a passionate
+              <span style={styles.bullet}> Full Stack Developer</span> skilled in
               building clean, responsive and functional web applications.
             </p>
 
             <p style={styles.textBlock}>
-              I completed my <span style={styles.bullet}>MCA with 77.4%</span> and have 
-              hands-on experience from my internship at 
-              <span style={styles.bullet}> XCEL Corp</span>, where I worked with 
+              I completed my <span style={styles.bullet}>MCA with 77.4%</span> and have
+              hands-on experience from my internship at
+              <span style={styles.bullet}> XCEL Corp</span>, where I worked with
               React.js, Bootstrap, Node.js and MongoDB.
             </p>
 
             <p style={styles.textBlock}>
-              <span style={styles.bullet}>Technical Skills:</span> HTML, CSS,
-              JavaScript, React.js, Node.js, Django, Python, MongoDB, PostgreSQL,
-              Git, GitHub, Bootstrap, SQL.
+              <span style={styles.bullet}>Technical Skills:</span> HTML, CSS, JavaScript,
+              React.js, Node.js, Django, Python, MongoDB, PostgreSQL, Git, GitHub,
+              Bootstrap, SQL.
             </p>
 
             <p style={styles.textBlock}>
-              <span style={styles.bullet}>Projects:</span> BookEcho (Django), 
-              Village Community Hub (MERN), E-commerce Site (Java & SQL), 
+              <span style={styles.bullet}>Projects:</span> BookEcho (Django),
+              Village Community Hub (MERN), E-commerce Site (Java & SQL),
               Banking System (PHP), Organic Web Store (PHP & SQL).
             </p>
 
             <p style={styles.textBlock}>
-              I love transforming ideas into real working applications and 
-              continuously improving my development skills.
+              I love transforming ideas into real working applications and constantly
+              growing my development skills.
             </p>
 
             <a href="/Mounika_M_Resume.pdf" download style={styles.resumeButton}>
-              ⬇ Download Resume
+              ⬇ Download Resume e
             </a>
           </div>
+
         </div>
       </section>
     </>

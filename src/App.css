@@ -1,55 +1,22 @@
+/* 🔥 UNIVERSAL CLEAN SPACING SYSTEM */
+section {
+  padding: 70px 20px;        /* Perfect padding */
+}
+
 @media (max-width: 768px) {
-  #home {
-    min-height: 100vh;
-    padding: 40px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    gap: 20px;
+  section {
+    padding: 45px 18px;     /* Mobile optimized */
   }
+}
 
-  .home-left {
-    order: 2;
-  }
+/* Remove unwanted gaps */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 
-  .home-right img {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto;
-    object-fit: cover;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    animation: float 4s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-  }
-
-  .home-title {
-    font-size: 30px;
-    font-weight: 700;
-  }
-
-  .home-subtitle {
-    font-size: 20px;
-    color: #6c63ff;
-    font-weight: 500;
-  }
-
-  .home-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .home-buttons a {
-    padding: 10px 22px;
-    font-size: 15px;
-    border-radius: 30px;
-  }
+/* Remove blank space between components */
+* {
+  box-sizing: border-box;
 }

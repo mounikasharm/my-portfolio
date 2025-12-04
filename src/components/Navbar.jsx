@@ -4,136 +4,104 @@ import { GiHamburgerMenu } from "react-icons/gi";
 function Navbar() {
   const [open, setOpen] = useState(false);
 
+  const navStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "20px 45px",
+    background: "linear-gradient(180deg, #020202, #090909, #050505)",
+    position: "sticky",
+    top: 0,
+    zIndex: 1500,
+    borderBottom: "1px solid rgba(255,255,255,0.1)",
+  };
+
+  const linkStyle = {
+    color: "white",
+    textDecoration: "none",
+    fontSize: "16px",
+    fontWeight: 600,
+    padding: "8px 14px",
+  };
+
   return (
-    <>
-      <nav className="nav">
-        <h2 className="logo">Mounika</h2>
+    <nav style={navStyle}>
 
-        {/* Desktop menu */}
-        <div className="desktop-menu">
-          {["Home", "About", "Projects", "Certificates", "Contact"].map((i) => (
-            <a key={i} href={`#${i.toLowerCase()}`} className="nav-link">
-              {i}
-            </a>
-          ))}
-        </div>
+      {/* LOGO */}
+      <h2 style={{ color: "#9ad8ff", fontWeight: 800, fontSize: "26px" }}>
+        Mounika M m
+      </h2>
 
-        {/* Hamburger */}
-        <GiHamburgerMenu
-          size={26}
-          className="mobile-icon"
-          onClick={() => setOpen(!open)}
-        />
-      </nav>
-
-      {/* Mobile menu */}
-      <div className={`mobile-menu ${open ? "open" : ""}`}>
-        {["Home", "About", "Projects", "Certificates", "Contact"].map((i) => (
-          <a
-            key={i}
-            href={`#${i.toLowerCase()}`}
-            className="mobile-link"
-            onClick={() => setOpen(false)}
-          >
-            {i}
+      {/* DESKTOP MENU */}
+      <div className="desktop-menu" style={{ display: "flex", gap: "22px" }}>
+        {["Home", "About", "Projects", "Certificates", "Contact"].map((item) => (
+          <a key={item} href={`#${item.toLowerCase()}`} style={linkStyle}>
+            {item}
           </a>
         ))}
       </div>
 
-      <style>{`
-        .nav {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 55px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0 8px;
-          background: rgba(0,0,0,0.55);
-          backdrop-filter: blur(10px);
-          z-index: 9999;
-          overflow: hidden;
-        }
+      {/* HAMBURGER ICON */}
+      <GiHamburgerMenu
+        className="mobile-icon"
+        size={28}
+        color="white"
+        style={{ display: "none", cursor: "pointer" }}
+        onClick={() => setOpen(!open)}
+      />
 
-        .logo {
-          color: #fff;
-          font-size: 18px; 
-          margin: 0;
-          white-space: nowrap;
-        }
+      {/* MOBILE DROPDOWN */}
+      {open && (
+        <div className="mobile-menu">
+          {["Home", "About", "Projects", "Certificates", "Contact"].map(
+            (item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                style={linkStyle}
+                onClick={() => setOpen(false)}
+              >
+                {item}
+              </a>
+            )
+          )}
+        </div>
+      )}
 
-        .desktop-menu {
-          display: flex;
-          gap: 18px;
-        }
-
-        .nav-link {
-          color: #fff;
-          text-decoration: none;
-          font-size: 15px;
-          font-weight: 600;
-        }
-
-        .mobile-icon {
-          display: none;
-          color: white;
-          cursor: pointer;
-          min-width: 26px;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-          position: fixed;
-          top: 55px;
-          left: 0;
-          right: 0;
-          height: 0;
-          overflow: hidden;
-          background: rgba(0,0,0,0.95);
-          transition: height 0.35s ease;
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-        }
-
-        .mobile-menu.open {
-          height: 240px;
-          padding: 15px 0;
-        }
-
-        .mobile-link {
-          color: #fff;
-          text-align: center;
-          text-decoration: none;
-          font-size: 18px;
-        }
-
-        /* RESPONSIVE FIX */
-        @media (max-width: 768px) {
-          .desktop-menu {
-            display: none;
+      <style>
+        {`
+          /* Mobile menu */
+          .mobile-menu {
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background: #111;
+            padding: 18px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
           }
-          .mobile-icon {
-            display: block;
-          }
-        }
 
-        /* EXTRA FIX FOR SMALL PHONES (280px - 360px width) */
-        @media (max-width: 360px) {
-          .nav {
-            padding: 0 6px;
+          /* MOBILE RESPONSIVE */
+          @media (max-width: 768px) {
+            .desktop-menu {
+              display: none !important; /* hide big menu */
+            }
+            .mobile-icon {
+              display: block !important;
+            }
+            nav {
+              padding: 14px 20px !important;
+            }
+            nav h2 {
+              font-size: 20px !important;
+            }
           }
-          .logo {
-            font-size: 16px;
-          }
-          .mobile-icon {
-            size: 24px;
-          }
-        }
-      `}</style>
-    </>
+        `}
+      </style>
+    </nav>
   );
 }
 

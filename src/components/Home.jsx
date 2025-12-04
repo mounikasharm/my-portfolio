@@ -1,80 +1,194 @@
-// Mobile-first React Portfolio Template for Mounika
+import React, { useEffect, useRef } from "react";
+import { FaReact, FaNodeJs, FaGithub } from "react-icons/fa";
+import { SiJavascript, SiMongodb, SiExpress } from "react-icons/si";
 
-import React from "react";
+export default function HomeSection() {
+  const typingRef = useRef(null);
 
-export default function App() {
+  useEffect(() => {
+    const titles = [
+      "Full Stack Developer",
+      "Python Developer",
+      "MERN Stack Developer",
+      "React.js Developer",
+      "Node.js Backend Developer",
+    ];
+
+    let index = 0;
+    let char = 0;
+    let timeout;
+
+    const type = () => {
+      timeout = setTimeout(() => {
+        if (char < titles[index].length) {
+          typingRef.current.textContent += titles[index][char];
+          char++;
+          type();
+        } else {
+          erase();
+        }
+      }, 90);
+    };
+
+    const erase = () => {
+      timeout = setTimeout(() => {
+        if (char > 0) {
+          typingRef.current.textContent = titles[index].substring(0, char - 1);
+          char--;
+          erase();
+        } else {
+          index = (index + 1) % titles.length;
+          type();
+        }
+      }, 40);
+    };
+
+    type();
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-black text-white font-sans">
-      {/* NAVBAR - MOBILE FIRST */}
-      <nav className="flex justify-between items-center px-4 py-4 bg-black/80 backdrop-blur-md sticky top-0 z-50 border-b border-white/10">
-        <h2 className="text-xl font-bold text-cyan-300">Mounika M</h2>
-        <button id="menuBtn" className="text-3xl md:hidden">☰</button>
-        <div id="mobileMenu" className="hidden flex-col gap-4 absolute top-16 right-4 bg-[#111] p-4 rounded-lg border border-white/10 md:flex md:static md:flex-row md:bg-transparent md:p-0 md:border-0">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
+    <section
+      id="home"
+      style={{
+        minHeight: "100vh",
+        background: "linear-gradient(180deg, #020202, #090909, #050505)",
+        color: "white",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        position: "relative",
+        textAlign: "center",
+        padding: "0 20px",
+        overflow: "hidden",
+      }}
+    >
+      {/* Glowing Background Orbs */}
+      <div className="glow orb1"></div>
+      <div className="glow orb2"></div>
 
-      {/* HOME SECTION */}
-      <section id="home" className="px-6 py-24 text-center md:text-left md:px-20">
-        <h1 className="text-4xl font-extrabold md:text-6xl">Hi, I'm <span className="text-cyan-300">Mounika</span></h1>
-        <p className="mt-3 text-lg text-gray-300 md:max-w-xl">
-          Full Stack Developer specializing in MERN & Django. I build modern, clean and animated web experiences.
-        </p>
-        <div className="mt-6 flex flex-col md:flex-row gap-4 justify-center md:justify-start">
-          <a className="bg-cyan-500 text-black px-6 py-3 rounded-full font-bold">View Projects</a>
-          <a className="border border-cyan-400 px-6 py-3 rounded-full font-bold text-cyan-300">Hire Me</a>
-        </div>
-      </section>
+      {/* MAIN TITLE */}
+      <h1 className="home-title">
+        Hi, I'm <span style={{ color: "#9ae8ff" }}>Mounika M</span>
+      </h1>
 
-      {/* ABOUT SECTION */}
-      <section id="about" className="px-6 py-20 bg-[#0d0d0d] md:px-20">
-        <h2 className="text-3xl font-bold text-center text-cyan-300 mb-10">About Me</h2>
-        <div className="grid grid-cols-2 gap-4 max-w-md mx-auto items-center">
-          <img src="/profile.jpeg" className="w-full h-32 object-cover rounded-xl" />
-          <p className="text-sm leading-relaxed text-gray-300">
-            I am a Full Stack Developer (MERN + Django) who enjoys building fast, responsive and attractive web apps.
-          </p>
-        </div>
-      </section>
+      {/* Typing */}
+      <h2 ref={typingRef} className="typing-title"></h2>
 
-      {/* SKILLS */}
-      <section id="skills" className="px-6 py-20 md:px-20">
-        <h2 className="text-3xl font-bold text-center text-cyan-300 mb-10">Skills</h2>
-        <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto text-center">
-          <div className="bg-[#111] p-4 rounded-lg border border-white/10">HTML</div>
-          <div className="bg-[#111] p-4 rounded-lg border border-white/10">CSS</div>
-          <div className="bg-[#111] p-4 rounded-lg border border-white/10">JavaScript</div>
-          <div className="bg-[#111] p-4 rounded-lg border border-white/10">React</div>
-          <div className="bg-[#111] p-4 rounded-lg border border-white/10">Node.js</div>
-          <div className="bg-[#111] p-4 rounded-lg border border-white/10">MongoDB</div>
-        </div>
-      </section>
+      {/* Tagline */}
+      <p className="home-tagline">
+        I build modern, interactive, fast, and visually stunning web applications
+        with MERN Stack + React animations......
+      </p>
 
-      {/* PROJECTS */}
-      <section id="projects" className="px-6 py-20 bg-[#0d0d0d] md:px-20">
-        <h2 className="text-3xl font-bold text-center text-cyan-300 mb-10">Projects</h2>
-        <div className="grid gap-6 max-w-lg mx-auto">
-          <div className="bg-[#111] p-5 rounded-xl border border-white/10">
-            <h3 className="text-xl font-bold text-cyan-300">Village Community Hub</h3>
-            <p className="text-gray-400 text-sm mt-2">A React-based community services platform.</p>
-          </div>
-          <div className="bg-[#111] p-5 rounded-xl border border-white/10">
-            <h3 className="text-xl font-bold text-cyan-300">Tele-Track CRM</h3>
-            <p className="text-gray-400 text-sm mt-2">Full MERN CRM system with dashboards and JWT auth.</p>
-          </div>
-        </div>
-      </section>
+      {/* Floating Tech Icons */}
+      <div className="floating-icons">
+        <FaReact className="float-icon react" />
+        <FaNodeJs className="float-icon node" />
+        <SiJavascript className="float-icon js" />
+        <SiMongodb className="float-icon mongo" />
+        <FaGithub className="float-icon git" />
+        <SiExpress className="float-icon express" />
+      </div>
 
-      {/* CONTACT */}
-      <section id="contact" className="px-6 py-20 md:px-20 text-center">
-        <h2 className="text-3xl font-bold text-cyan-300 mb-6">Contact Me</h2>
-        <p className="text-gray-400">Email: mounikamsharma@gmail.com</p>
-        <p className="text-gray-400 mt-2">Location: Bengaluru</p>
-      </section>
-    </div>
+      {/* CSS */}
+      <style>
+        {`
+          /* TEXT Styles */
+          .home-title {
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(90deg,#00eaff,#e700ff);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 25px rgba(0,234,255,0.4);
+            animation: fadeDown 1.2s ease;
+            padding: 0 10px;
+            line-height: 1.2;
+          }
+
+          .typing-title {
+            font-size: clamp(1.2rem, 5vw, 2.2rem);
+            margin-top: 10px;
+            height: 40px;
+            letter-spacing: 1px;
+            animation: fadeIn 1.8s ease;
+          }
+
+          .home-tagline {
+            margin-top: 12px;
+            font-size: clamp(0.9rem, 4vw, 1.2rem);
+            opacity: 0.85;
+            max-width: 620px;
+            animation: fadeUp 2s ease;
+            padding: 0 12px;
+          }
+
+          /* Glowing Orbs */
+          .glow {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.33;
+            animation: pulse 6s infinite alternate;
+          }
+          .orb1 { background: #00eaff; top: 12%; left: 12%; }
+          .orb2 { background: #ff3cff; bottom: 12%; right: 10%; }
+
+          /* Floating Icons */
+          .float-icon {
+            position: absolute;
+            font-size: clamp(2rem, 7vw, 3.2rem);
+            opacity: 0.15;
+            animation: float 6s ease-in-out infinite;
+          }
+          .react { top: 16%; left: 8%; animation-delay: 0.2s; }
+          .node { top: 30%; right: 10%; animation-delay: 0.4s; }
+          .js { bottom: 20%; left: 12%; animation-delay: 0.6s; }
+          .mongo { top: 60%; right: 15%; animation-delay: 0.8s; }
+          .git { bottom: 16%; right: 10%; animation-delay: 1s; }
+          .express { top: 75%; left: 12%; animation-delay: 1.2s; }
+
+          /* Animations */
+          @keyframes float {
+            0% { transform: translateY(0); opacity: 0.15; }
+            50% { transform: translateY(-16px); opacity: 0.25; }
+            100% { transform: translateY(0); opacity: 0.15; }
+          }
+
+          @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+          }
+
+          @keyframes fadeDown {
+            0% { opacity: 0; transform: translateY(-40px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+
+          @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+
+          @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+          }
+
+          /* Responsive fixes */
+          @media (max-width: 480px) {
+            .glow {
+              width: 220px;
+              height: 220px;
+              filter: blur(90px);
+            }
+          }
+        `}
+      </style>
+    </section>
   );
 }

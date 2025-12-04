@@ -17,19 +17,14 @@ export default function ProjectsSection() {
     tech: ["React", "Node.js", "Express", "MongoDB", "JWT"],
   },
   {
-    title: "BookLoop Marketplace",
+    title: "BookLoop ",
     description:
       "A book marketplace where users upload books, preview images, chat via WhatsApp, and filter by categories.",
     tech: ["Django", "Python", "SQLite", "HTML/CSS"],
   },
+  
   {
-    title: "BookEcho",
-    description:
-      "A book exchange system where users can trade used books for discounts on new ones.",
-    tech: ["Django", "HTML", "CSS", "JavaScript"],
-  },
-  {
-    title: "E-commerce Website",
+    title: "Online Mobile Shopping",
     description:
       "Secure online shopping website with user login, product management, and responsive dashboard.",
     tech: ["Java", "SQL", "HTML"],
@@ -52,18 +47,8 @@ export default function ProjectsSection() {
       "My personal animated portfolio with EmailJS integration, dynamic sections and a responsive UI.",
     tech: ["React", "EmailJS", "CSS Animations"],
   },
-  {
-    title: "Student Result Management",
-    description:
-      "A web application to manage student marks, calculate grades, and generate reports.",
-    tech: ["PHP", "MySQL", "HTML/CSS"],
-  },
-  {
-    title: "Weather Forecast App",
-    description:
-      "A real-time weather forecast app using API calls and interactive UI components.",
-    tech: ["JavaScript", "API", "HTML/CSS"],
-  },
+ 
+ 
   {
     title: "Task Manager App",
     description:

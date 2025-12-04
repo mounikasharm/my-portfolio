@@ -98,7 +98,7 @@ export default function AboutSection() {
           <h2 style={styles.heading}>About Me</h2>
 
           <p style={styles.textBlock}>
-            Hello! I’m <strong>Mounika</strong>, a passionate
+            Hello! I’m <strong>Mounika M</strong>, a passionate
             <span style={styles.bullet}> Full Stack Developer</span>.
           </p>
 

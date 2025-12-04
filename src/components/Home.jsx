@@ -24,10 +24,10 @@ export default function Home() {
         setTimeout(() => {
           charIndex = 0;
           index = (index + 1) % texts.length;
-        }, 700);
+        }, 900);
       }
 
-      setTimeout(type, 110);
+      setTimeout(type, 95);
     };
 
     type();
@@ -39,81 +39,84 @@ export default function Home() {
     section: {
       minHeight: "100vh",
       width: "100%",
-      padding: isMobile ? "80px 18px 40px" : "120px 60px",
-      background: "linear-gradient(to bottom, #000, #0a0a0a)",
+      padding: isMobile ? "100px 20px 40px" : "120px 70px",
+      background:
+        "linear-gradient(135deg, #060606, #0b0b0b, #111, #0d0d0d, #000)",
       color: "white",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      alignItems: isMobile ? "center" : "flex-start",
+      animation: "fadeInSlow 1.4s ease-out forwards",
       textAlign: isMobile ? "center" : "left",
-      animation: "fadeIn 1.2s ease-out",
+      alignItems: isMobile ? "center" : "flex-start",
     },
 
     title: {
-      fontSize: isMobile ? "34px" : "54px",
-      fontWeight: "800",
-      lineHeight: isMobile ? "1.3" : "1.15",
-      marginBottom: "10px",
+      fontSize: isMobile ? "36px" : "60px",
+      fontWeight: "900",
+      lineHeight: "1.2",
+      marginBottom: "15px",
+      animation: "slideDown 1s ease-out",
     },
 
     gradientName: {
-      background: "linear-gradient(90deg,#4fd1ff,#bb61ff,#ff79c6)",
+      background: "linear-gradient(90deg,#4fd1ff,#d16bff,#ff79c6,#ffcc70)",
       WebkitBackgroundClip: "text",
       color: "transparent",
-      display: "inline-block",
+      textShadow: "0 0 18px rgba(255,255,255,0.15)",
     },
 
     typing: {
-      fontSize: isMobile ? "19px" : "26px",
+      fontSize: isMobile ? "20px" : "28px",
       fontWeight: "700",
-      marginBottom: "20px",
-      minHeight: "30px",
+      marginBottom: "22px",
+      minHeight: "32px",
       color: "#4fd1ff",
-      opacity: 0.9,
-      animation: "slideUp 0.8s ease",
+      letterSpacing: "0.5px",
+      animation: "slideUp 1s ease",
     },
 
     subtitle: {
-      maxWidth: "480px",
-      fontSize: isMobile ? "15px" : "18px",
-      lineHeight: "1.7",
-      color: "#d3d3d3",
-      marginBottom: "38px",
+      maxWidth: "580px",
+      fontSize: isMobile ? "16px" : "20px",
+      lineHeight: "1.8",
+      color: "#d7d7d7",
+      marginBottom: "40px",
+      animation: "fadeUp 1.2s ease-out",
     },
 
     buttonWrapper: {
       display: "flex",
-      gap: isMobile ? "14px" : "18px",
+      gap: isMobile ? "14px" : "20px",
       flexDirection: isMobile ? "column" : "row",
       width: isMobile ? "100%" : "auto",
     },
 
     btnPrimary: {
-      padding: "12px 34px",
-      borderRadius: "30px",
-      background: "linear-gradient(90deg,#4fd1ff,#bb61ff)",
+      padding: "14px 38px",
+      borderRadius: "40px",
+      background: "linear-gradient(90deg,#4fd1ff,#a763ff)",
       color: "#fff",
       fontWeight: "700",
       textDecoration: "none",
-      fontSize: isMobile ? "15px" : "16px",
+      fontSize: isMobile ? "16px" : "18px",
       width: isMobile ? "100%" : "auto",
       textAlign: "center",
-      boxShadow: "0 0 12px rgba(79,209,255,0.4)",
-      transition: "0.2s",
+      boxShadow: "0 0 15px rgba(79,209,255,0.5)",
+      transition: "0.3s",
     },
 
     btnOutline: {
-      padding: "12px 34px",
-      borderRadius: "30px",
+      padding: "14px 38px",
+      borderRadius: "40px",
       border: "2px solid #4fd1ff",
       color: "#4fd1ff",
       fontWeight: "700",
       textDecoration: "none",
-      fontSize: isMobile ? "15px" : "16px",
+      fontSize: isMobile ? "16px" : "18px",
       width: isMobile ? "100%" : "auto",
       textAlign: "center",
-      transition: "0.2s",
+      transition: "0.3s",
     },
   };
 
@@ -127,6 +130,7 @@ export default function Home() {
 
       <p style={styles.subtitle}>
         I build modern, responsive and high-performance MERN stack applications.
+        Skilled in React, Node.js, MongoDB, and UI/UX-driven web development.
       </p>
 
       <div style={styles.buttonWrapper}>
@@ -134,19 +138,27 @@ export default function Home() {
         <a href="#contact" style={styles.btnOutline}>Hire Me</a>
       </div>
 
-      <style>
-        {`
-          @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(25px); }
-            100% { opacity: 1; transform: translateY(0); }
-          }
+      <style>{`
+        @keyframes fadeInSlow {
+          0% { opacity: 0; transform: translateY(40px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
 
-          @keyframes slideUp {
-            0% { opacity: 0; transform: translateY(10px); }
-            100% { opacity: 1; transform: translateY(0); }
-          }
-        `}
-      </style>
+        @keyframes slideUp {
+          0% { opacity: 0; transform: translateY(18px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+          0% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+          0% { opacity: 0; transform: translateY(-20px);}
+          100% { opacity: 1; transform: translateY(0);}
+        }
+      `}</style>
     </section>
   );
 }

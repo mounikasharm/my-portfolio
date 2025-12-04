@@ -2,7 +2,7 @@ import React from "react";
 
 export default function AboutSection() {
   const isMobile = window.innerWidth <= 768;
-  const imageSize = isMobile ? "220px" : "280px";
+  const imageSize = isMobile ? "260px" : "320px"; // increased size
 
   const styles = {
     section: {
@@ -25,21 +25,22 @@ export default function AboutSection() {
       width: imageSize,
       height: imageSize,
       borderRadius: "50%",
-      border: "5px solid #1f4fff", // only border
-      padding: "0",                // removed background padding
-      background: "transparent",   // ⭐ no color
+      border: "5px solid #1f4fff",
+      background: "transparent",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      overflow: "hidden",          // keeps perfect circle
+      overflow: "hidden",
     },
 
     profileImage: {
-      width: "100%",
-      height: "100%",
+      width: "115%",      // zoomed out slightly to show more face
+      height: "115%",
       borderRadius: "50%",
       objectFit: "cover",
-      objectPosition: "top",
+
+      objectPosition: "center -20px", 
+      // 👆 moves image upward to avoid cropping chin
     },
 
     heading: {
@@ -88,7 +89,7 @@ export default function AboutSection() {
   return (
     <section id="about" style={styles.section}>
       <div style={isMobile ? styles.mobile : styles.container}>
-
+        
         {/* PROFILE IMAGE */}
         <div style={styles.leftImageBox}>
           <img src="/profile.jpeg" alt="Mounika" style={styles.profileImage} />

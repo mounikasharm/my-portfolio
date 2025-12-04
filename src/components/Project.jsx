@@ -1,54 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function ProjectsSection() {
+  const [expandedIndex, setExpandedIndex] = useState(null);
+
   const projects = [
     {
       title: "Village Community Hub",
       description:
-        "A digital platform to help rural citizens access government schemes, submit service requests, and connect with local officials.",
-      tech: ["React", "Express", "MongoDB", "Node.js"],
+        "A digital platform to help rural citizens access schemes, submit service requests, verify delivery status, and communicate with officers.",
+      tech: ["React", "MongoDB", "Express", "Node.js"],
     },
     {
       title: "Tele-Track CRM",
       description:
-        "A CRM application with call tracking, lead management, status updates, dashboard analytics and JWT authentication.",
-      tech: ["React", "Node.js", "Express", "MongoDB", "JWT"],
+        "A CRM application with call tracking, lead updates, status changes, dashboard analytics, JWT authentication, and role-based login.",
+      tech: ["React", "Node.js", "MongoDB", "JWT"],
     },
     {
       title: "BookLoop Marketplace",
       description:
         "A book marketplace where users upload books, preview images, chat via WhatsApp, and filter by categories.",
-      tech: ["Django", "Python", "SQLite", "HTML/CSS"],
+      tech: ["Django", "Python", "SQLite"],
     },
     {
       title: "BookEcho",
       description:
-        "A book exchange system where users can trade used books for discounts on new ones.",
-      tech: ["Django", "HTML", "CSS", "JavaScript"],
-    },
-    {
-      title: "E-commerce Website",
-      description:
-        "Secure shopping site with login, product management and user dashboard.",
-      tech: ["Java", "SQL", "HTML"],
-    },
-    {
-      title: "Banking System",
-      description:
-        "A web application for handling user transactions and maintaining records.",
-      tech: ["PHP", "SQL"],
-    },
-    {
-      title: "Organic Web Store",
-      description:
-        "Simple e-commerce store to buy organic products online with smooth UI.",
-      tech: ["PHP", "CSS", "SQL"],
-    },
-    {
-      title: "Portfolio Website",
-      description:
-        "My personal animated portfolio with EmailJS integration and responsive UI.",
-      tech: ["React", "EmailJS", "CSS Animations"],
+        "A book exchange system where users trade used books for discounts on new ones.",
+      tech: ["Django", "HTML", "CSS"],
     },
   ];
 
@@ -57,145 +35,131 @@ export default function ProjectsSection() {
       id="projects"
       style={{
         padding: "90px 20px",
-        background: "#000",
+        background: "#000000",        // 🔥 FIX WHITE COLOR
+        backgroundColor: "#000000",  // 🔥 DOUBLE FIX
         color: "white",
         textAlign: "center",
       }}
     >
-      {/* Heading */}
-      <div style={{ marginBottom: 50 }}>
-        <h2
-          style={{
-            fontSize: "2.8rem",
-            fontWeight: "700",
-            marginBottom: 10,
-            background: "linear-gradient(90deg, #7df3ff, #d17bff)",
-            WebkitBackgroundClip: "text",
-            color: "transparent",
-          }}
-        >
-          Projects
-        </h2>
+      <h2
+        style={{
+          fontSize: "2.8rem",
+          fontWeight: "700",
+          background: "linear-gradient(90deg, #7df3ff, #d17bff)",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
+          marginBottom: "20px",
+        }}
+      >
+        Projects
+      </h2>
 
-        <div
-          style={{
-            width: 90,
-            height: 4,
-            background: "linear-gradient(90deg, #6fc9ff, #b36bff, #ff6bcb)",
-            margin: "0 auto",
-            borderRadius: 10,
-          }}
-        ></div>
-      </div>
-
-      {/* Project Cards Grid */}
       <div
-        className="projects-grid"
+        style={{
+          width: 90,
+          height: 4,
+          background: "linear-gradient(90deg, #6fc9ff, #b36bff, #ff6bcb)",
+          margin: "0 auto 50px",
+          borderRadius: 10,
+        }}
+      ></div>
+
+      {/* GRID */}
+      <div
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          gap: 25,
-          paddingBottom: 20,
+          gap: "25px",
         }}
       >
-        {projects.map((p, index) => (
-          <div
-            key={index}
-            style={{
-              padding: 25,
-              height: "260px", // ✨ SAME HEIGHT FOR ALL CARDS
-              borderRadius: 20,
-              background: "rgba(255, 255, 255, 0.06)",
-              border: "1px solid rgba(255, 255, 255, 0.15)",
-              backdropFilter: "blur(12px)",
-              boxShadow: "0 10px 35px rgba(0,0,0,0.4)",
-              transition: "0.35s ease",
-              cursor: "pointer",
-              animation: `fadeInUp 0.8s ease ${index * 0.12}s forwards`,
-              opacity: 0,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-12px)";
-              e.currentTarget.style.boxShadow =
-                "0 25px 45px rgba(120,80,255,0.45)";
-              e.currentTarget.style.border =
-                "1px solid rgba(180,120,255,0.4)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow =
-                "0 10px 35px rgba(0,0,0,0.4)";
-              e.currentTarget.style.border =
-                "1px solid rgba(255, 255, 255, 0.15)";
-            }}
-          >
-            <h3
+        {projects.map((p, index) => {
+          const isOpen = expandedIndex === index;
+
+          return (
+            <div
+              key={index}
+              onClick={() =>
+                setExpandedIndex(isOpen ? null : index)
+              }
               style={{
-                fontSize: "1.4rem",
-                fontWeight: 700,
-                marginBottom: 12,
-                background: "linear-gradient(90deg,#7df3ff,#cc7bff)",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
+                padding: 25,
+                borderRadius: 20,
+                background: "rgba(255, 255, 255, 0.06)",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
+                backdropFilter: "blur(12px)",
+                boxShadow: "0 5px 25px rgba(0,0,0,0.4)",
+                cursor: "pointer",
+                transition: "0.3s ease",
+                overflow: "hidden",
+                height: isOpen ? "auto" : "180px", // 🔥 COLLAPSED HEIGHT
               }}
             >
-              {p.title}
-            </h3>
+              {/* TITLE */}
+              <h3
+                style={{
+                  fontSize: "1.4rem",
+                  fontWeight: "700",
+                  marginBottom: 10,
+                  background: "linear-gradient(90deg,#7df3ff,#cc7bff)",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                }}
+              >
+                {p.title}
+              </h3>
 
-            <p
-              style={{
-                color: "#d1e7ff",
-                marginBottom: 15,
-                lineHeight: "1.6",
-                fontSize: "0.93rem",
-              }}
-            >
-              {p.description}
-            </p>
-
-            <div style={{ marginTop: 10 }}>
-              {p.tech.map((t, i) => (
-                <span
-                  key={i}
+              {/* DESCRIPTION → Only show when expanded */}
+              {isOpen && (
+                <p
                   style={{
-                    display: "inline-block",
-                    padding: "6px 12px",
-                    marginRight: 6,
-                    marginTop: 8,
-                    fontSize: "0.8rem",
-                    borderRadius: 12,
-                    background: "rgba(255,255,255,0.08)",
-                    border: "1px solid rgba(255,255,255,0.2)",
+                    color: "#d1e7ff",
+                    lineHeight: "1.6",
+                    marginBottom: 15,
                   }}
                 >
-                  {t}
-                </span>
-              ))}
+                  {p.description}
+                </p>
+              )}
+
+              {/* TECH → Show only when expanded */}
+              {isOpen && (
+                <div>
+                  {p.tech.map((t, i) => (
+                    <span
+                      key={i}
+                      style={{
+                        padding: "6px 12px",
+                        marginRight: 6,
+                        marginTop: 8,
+                        fontSize: "0.8rem",
+                        borderRadius: 12,
+                        background: "rgba(255,255,255,0.08)",
+                        border: "1px solid rgba(255,255,255,0.2)",
+                        display: "inline-block",
+                      }}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* READ MORE / CLOSE */}
+              <p
+                style={{
+                  marginTop: 12,
+                  fontSize: "0.9rem",
+                  color: "#7ddaff",
+                }}
+              >
+                {isOpen ? "Close ▲" : "Tap to Read More ▼"}
+              </p>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
-
-      {/* Animations */}
-      <style>{`
-        @keyframes fadeInUp {
-          0% { opacity: 0; transform: translateY(40px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 600px) {
-          .projects-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 18px !important;
-          }
-
-          #projects h2 {
-            font-size: 2.2rem;
-          }
-        }
-      `}</style>
     </section>
   );
 }

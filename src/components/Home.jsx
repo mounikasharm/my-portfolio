@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 function Home() {
+  // Typing Effect
   const typingRef = useRef(null);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ function Home() {
         setTimeout(() => {
           charIndex = 0;
           index = (index + 1) % texts.length;
-        }, 800);
+        }, 1000);
       }
 
       setTimeout(type, 120);
@@ -39,26 +40,25 @@ function Home() {
       id="home"
       style={{
         minHeight: "100vh",
-        background: "linear-gradient(180deg, #020202, #080808, #000000)",
+        background: "linear-gradient(180deg, #020202, #090909, #050505)",
         color: "white",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        padding: "0 20px",
-        paddingTop: "0px", // 🔥 removed extra gap
-        position: "relative",
+        padding: "40px 20px", // FIXED SPACING
         overflow: "hidden",
+        position: "relative",
       }}
     >
-      {/* Background Glow Lights */}
-      <div style={styles.circleSmall}></div>
-      <div style={styles.circleBottom}></div>
+      {/* Floating Background Circles */}
+      <div style={styles.circle1}></div>
+      <div style={styles.circle2}></div>
+      <div style={styles.circle3}></div>
 
-      <h1 style={styles.heading}>
-        Hi, I'm <span style={{ color: "#00c6ff" }}>Mounika</span>
-      </h1>
+      {/* Main Content */}
+      <h1 style={styles.heading}>Hi, I'm <span style={{ color: "#00c6ff" }}>Mounika</span></h1>
 
       <h2 ref={typingRef} style={styles.typing}></h2>
 
@@ -66,6 +66,7 @@ function Home() {
         I build modern, responsive and interactive web applications.
       </p>
 
+      {/* Buttons */}
       <div style={styles.buttonContainer}>
         <a href="#projects" style={styles.primaryBtn}>My Projects</a>
         <a href="#contact" style={styles.secondaryBtn}>Hire Me</a>
@@ -76,73 +77,80 @@ function Home() {
 
 const styles = {
   heading: {
-    fontSize: "30px",
-    fontWeight: "800",
-    letterSpacing: "1px",
+    fontSize: "36px",
+    fontWeight: "bold",
     marginBottom: "10px",
   },
 
   typing: {
-    fontSize: "18px",
+    fontSize: "20px",
     color: "#00c6ff",
-    height: "26px",
+    height: "28px",
     marginBottom: "15px",
   },
 
   subtitle: {
-    maxWidth: "420px",
-    fontSize: "15px",
-    lineHeight: "1.5",
+    maxWidth: "500px",
+    fontSize: "16px",
     color: "#cccccc",
-    marginBottom: "22px",
+    marginBottom: "20px",
   },
 
   buttonContainer: {
     display: "flex",
-    gap: "12px",
-    marginTop: "5px",
+    gap: "15px",
+    marginTop: "10px",
   },
 
   primaryBtn: {
     padding: "10px 20px",
     background: "#00c6ff",
     color: "black",
-    borderRadius: "6px",
     textDecoration: "none",
-    fontWeight: "700",
+    borderRadius: "6px",
+    fontWeight: "bold",
   },
 
   secondaryBtn: {
     padding: "10px 20px",
     border: "2px solid #00c6ff",
     color: "white",
-    borderRadius: "6px",
     textDecoration: "none",
-    fontWeight: "700",
+    borderRadius: "6px",
+    fontWeight: "bold",
   },
 
-  // Optimized blur lights for mobile
-  circleSmall: {
-    width: "130px",
-    height: "130px",
+  // Background circles
+  circle1: {
+    width: "220px",
+    height: "220px",
     borderRadius: "50%",
-    background: "rgba(0, 198, 255, 0.20)",
+    background: "rgba(0, 198, 255, 0.2)",
     position: "absolute",
-    top: "-20px",
-    left: "-20px",
+    top: "-40px",
+    left: "-40px",
     filter: "blur(40px)",
   },
-
-  circleBottom: {
-    width: "140px",
-    height: "140px",
+  circle2: {
+    width: "200px",
+    height: "200px",
     borderRadius: "50%",
-    background: "rgba(255, 0, 128, 0.18)",
+    background: "rgba(255, 0, 128, 0.2)",
     position: "absolute",
     bottom: "-30px",
-    right: "-20px",
+    right: "-30px",
     filter: "blur(40px)",
-  }
+  },
+  circle3: {
+    width: "150px",
+    height: "150px",
+    borderRadius: "50%",
+    background: "rgba(255, 255, 255, 0.1)",
+    position: "absolute",
+    top: "40%",
+    left: "60%",
+    filter: "blur(60px)",
+  },
 };
 
 export default Home;

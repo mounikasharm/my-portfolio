@@ -85,8 +85,7 @@ export default function AboutSection() {
   return (
     <section id="about" style={styles.section}>
       <div style={isMobile ? styles.mobile : styles.container}>
-                  <h2 style={styles.heading}>About Me</h2>
-
+        
         {/* PROFILE IMAGE */}
         <div style={styles.leftImageBox}>
           <img src="/profile.jpeg" alt="Mounika" style={styles.profileImage} />
@@ -94,6 +93,7 @@ export default function AboutSection() {
 
         {/* RIGHT TEXT */}
         <div>
+          <h2 style={styles.heading}>About Me</h2>
 
           <p style={styles.textBlock}>
             Hello! I’m <strong>Mounika</strong>, a passionate 

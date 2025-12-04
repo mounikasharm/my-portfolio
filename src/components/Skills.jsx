@@ -1,54 +1,25 @@
 import React from "react";
 import {
-  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGithub, FaPython
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaPython,
+  FaReact,
+  FaNodeJs,
+  FaGithub,
 } from "react-icons/fa";
 import {
-  SiMongodb, SiExpress, SiPostman, SiDjango,
-  SiBootstrap, SiSqlite, SiTailwindcss, SiGit, SiPostgresql
+  SiBootstrap,
+  SiExpress,
+  SiDjango,
+  SiMongodb,
+  SiSqlite,
+  SiPostgresql,
+  SiGit,
+  SiPostman,
 } from "react-icons/si";
 
 export default function SkillsSection() {
-
-  const container = {
-    padding: "90px 20px",
-    background: "linear-gradient(180deg, #000000, #060606, #0b0b0b)",
-    minHeight: "100vh",
-    textAlign: "center",
-    color: "white",
-  };
-
-  const mainCard = {
-    backdropFilter: "blur(20px)",
-    background: "rgba(255,255,255,0.08)",
-    borderRadius: "22px",
-    border: "1px solid rgba(255,255,255,0.15)",
-    padding: "35px 22px",
-    maxWidth: "900px",
-    margin: "0 auto",
-    animation: "fadeUp 1s ease"
-  };
-
-  const grid = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-    gap: "18px",
-    marginTop: "15px",
-  };
-
-  const card = {
-    background: "rgba(255,255,255,0.06)",
-    padding: "18px 10px",
-    borderRadius: "14px",
-    border: "1px solid rgba(255,255,255,0.12)",
-    textAlign: "center",
-    transition: "0.3s ease",
-    cursor: "pointer"
-  };
-
-  const icon = { fontSize: "32px", marginBottom: "6px" };
-  const label = { fontSize: "14px", fontWeight: 600 };
-
-  // ⭐ Skills extracted from your RESUME
   const techStack = [
     { name: "HTML5", icon: <FaHtml5 />, color: "#ff5722" },
     { name: "CSS3", icon: <FaCss3Alt />, color: "#2965f1" },
@@ -72,104 +43,105 @@ export default function SkillsSection() {
   ];
 
   return (
-    <section id="skills" style={container}>
+    <section
+      id="skills"
+      style={{
+        padding: "50px 20px",
+        background: "linear-gradient(180deg, #000000, #060606, #0b0b0b)",
+        textAlign: "center",
+        color: "white",
+      }}
+    >
       <h2
         style={{
-          fontSize: "36px",
+          fontSize: "34px",
           fontWeight: "800",
           background: "linear-gradient(90deg,#7ef0ff,#c97bff)",
           WebkitBackgroundClip: "text",
           color: "transparent",
           marginBottom: "25px",
-          animation: "fadeDown 1s ease",
         }}
       >
         My Skills ⚡
       </h2>
 
-      <div style={mainCard}>
-        
-        {/* TECH STACK */}
-        <h3 style={{ fontSize: "20px", marginBottom: "10px", color: "#dff7ff" }}>
+      <div
+        style={{
+          backdropFilter: "blur(20px)",
+          background: "rgba(255,255,255,0.08)",
+          borderRadius: "22px",
+          border: "1px solid rgba(255,255,255,0.15)",
+          padding: "30px 20px",
+          maxWidth: "900px",
+          margin: "0 auto",
+        }}
+      >
+        <h3 style={{ fontSize: "18px", marginBottom: "10px", color: "#dff7ff" }}>
           💻 Tech Stack
         </h3>
 
-        <div style={grid}>
+        <div style={gridStyle}>
           {techStack.map((item) => (
             <div
               key={item.name}
-              style={card}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "scale(1.08)";
-                e.currentTarget.style.boxShadow = `0 0 18px ${item.color}60`;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "scale(1)";
-                e.currentTarget.style.boxShadow = "none";
-              }}
+              className="skill-card"
+              style={{ ...cardStyle, "--shadow-color": item.color }}
             >
-              <div style={{ ...icon, color: item.color }}>{item.icon}</div>
-              <p style={label}>{item.name}</p>
+              <div style={{ fontSize: "30px", color: item.color }}>
+                {item.icon}
+              </div>
+              <p style={{ fontSize: "14px", fontWeight: 600 }}>{item.name}</p>
             </div>
           ))}
         </div>
 
-        {/* TOOLS */}
-        <h3
-          style={{
-            marginTop: "34px",
-            fontSize: "20px",
-            color: "#ffdfdf",
-          }}
-        >
+        <h3 style={{ marginTop: "30px", fontSize: "18px", color: "#ffdfdf" }}>
           🧰 Tools I Use
         </h3>
 
-        <div style={grid}>
+        <div style={gridStyle}>
           {tools.map((item) => (
             <div
               key={item.name}
-              style={card}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "scale(1.08)";
-                e.currentTarget.style.boxShadow = `0 0 18px ${item.color}55`;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "scale(1)";
-                e.currentTarget.style.boxShadow = "none";
-              }}
+              className="skill-card"
+              style={{ ...cardStyle, "--shadow-color": item.color }}
             >
-              <div style={{ ...icon, color: item.color }}>{item.icon}</div>
-              <p style={label}>{item.name}</p>
+              <div style={{ fontSize: "30px", color: item.color }}>
+                {item.icon}
+              </div>
+              <p style={{ fontSize: "14px", fontWeight: 600 }}>{item.name}</p>
             </div>
           ))}
         </div>
-
       </div>
 
-      {/* ANIMATIONS */}
-      <style>{`
-        @keyframes fadeUp {
-          0% { opacity: 0; transform: translateY(40px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeDown {
-          0% { opacity: 0; transform: translateY(-25px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* MOBILE OPTIMIZATION */
-        @media (max-width: 600px) {
-          #skills h2 {
-            font-size: 28px;
+      <style>
+        {`
+          .skill-card {
+            transition: 0.3s ease;
           }
-
-          div[style*="grid"] {
-            grid-template-columns: repeat(2, 1fr) !important;
+          .skill-card:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 18px var(--shadow-color);
           }
-        }
-      `}</style>
+        `}
+      </style>
     </section>
   );
 }
+
+const gridStyle = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
+  gap: "16px",
+  marginTop: "10px",
+};
+
+const cardStyle = {
+  background: "rgba(255,255,255,0.06)",
+  padding: "16px 10px",
+  borderRadius: "14px",
+  border: "1px solid rgba(255,255,255,0.12)",
+  textAlign: "center",
+  cursor: "pointer",
+};

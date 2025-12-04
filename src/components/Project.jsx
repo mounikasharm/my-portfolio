@@ -4,31 +4,73 @@ export default function ProjectsSection() {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
   const projects = [
-    {
-      title: "Village Community Hub",
-      description:
-        "A digital platform to help rural citizens access schemes, submit service requests, verify delivery status, and communicate with officers.",
-      tech: ["React", "MongoDB", "Express", "Node.js"],
-    },
-    {
-      title: "Tele-Track CRM",
-      description:
-        "A CRM application with call tracking, lead updates, status changes, dashboard analytics, JWT authentication, and role-based login.",
-      tech: ["React", "Node.js", "MongoDB", "JWT"],
-    },
-    {
-      title: "BookLoop Marketplace",
-      description:
-        "A book marketplace where users upload books, preview images, chat via WhatsApp, and filter by categories.",
-      tech: ["Django", "Python", "SQLite"],
-    },
-    {
-      title: "BookEcho",
-      description:
-        "A book exchange system where users trade used books for discounts on new ones.",
-      tech: ["Django", "HTML", "CSS"],
-    },
-  ];
+  {
+    title: "Village Community Hub",
+    description:
+      "A digital platform to help rural citizens access government schemes, submit service requests, and connect with local officials.",
+    tech: ["React", "Express", "MongoDB", "Node.js"],
+  },
+  {
+    title: "Tele-Track CRM",
+    description:
+      "A CRM application with call tracking, lead management, status updates, dashboard analytics and JWT authentication.",
+    tech: ["React", "Node.js", "Express", "MongoDB", "JWT"],
+  },
+  {
+    title: "BookLoop Marketplace",
+    description:
+      "A book marketplace where users upload books, preview images, chat via WhatsApp, and filter by categories.",
+    tech: ["Django", "Python", "SQLite", "HTML/CSS"],
+  },
+  {
+    title: "BookEcho",
+    description:
+      "A book exchange system where users can trade used books for discounts on new ones.",
+    tech: ["Django", "HTML", "CSS", "JavaScript"],
+  },
+  {
+    title: "E-commerce Website",
+    description:
+      "Secure online shopping website with user login, product management, and responsive dashboard.",
+    tech: ["Java", "SQL", "HTML"],
+  },
+  {
+    title: "Banking System",
+    description:
+      "A banking web application for handling user transactions, deposits, withdrawals and records.",
+    tech: ["PHP", "SQL"],
+  },
+  {
+    title: "Organic Web Store",
+    description:
+      "A simple online store to buy organic products with a clean UI and smooth user experience.",
+    tech: ["PHP", "CSS", "SQL"],
+  },
+  {
+    title: "Portfolio Website",
+    description:
+      "My personal animated portfolio with EmailJS integration, dynamic sections and a responsive UI.",
+    tech: ["React", "EmailJS", "CSS Animations"],
+  },
+  {
+    title: "Student Result Management",
+    description:
+      "A web application to manage student marks, calculate grades, and generate reports.",
+    tech: ["PHP", "MySQL", "HTML/CSS"],
+  },
+  {
+    title: "Weather Forecast App",
+    description:
+      "A real-time weather forecast app using API calls and interactive UI components.",
+    tech: ["JavaScript", "API", "HTML/CSS"],
+  },
+  {
+    title: "Task Manager App",
+    description:
+      "A task managing tool with CRUD operations, reminder features, and local storage support.",
+    tech: ["JavaScript", "HTML", "CSS"],
+  },
+];
 
   return (
     <section

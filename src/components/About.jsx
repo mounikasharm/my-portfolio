@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function AboutSection() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const styles = {
     section: {
-      padding: "90px 20px",
+      padding: "100px 20px",
       background: "#0b0c10",
       color: "white",
+      overflow: "hidden",
     },
 
     container: {
@@ -14,32 +23,42 @@ export default function AboutSection() {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      gap: "50px",
+      gap: "60px",
+      opacity: 0,
+      animation: "fadeIn 1.3s ease forwards",
+    },
+
+    mobile: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      textAlign: "center",
+      gap: "40px",
+      opacity: 0,
+      animation: "fadeIn 1.3s ease forwards",
     },
 
     leftImageBox: {
       width: "280px",
-      height: "200px",
-      borderRadius: "50%",
-      border: "5px solid #1f4fff",
-      padding: "4px",
-      background: "linear-gradient(180deg, #4cbfff, #b36bff)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
+      height: "330px",
+      borderRadius: "20px",
+      padding: "6px",
+      background: "linear-gradient(135deg, #4cbfff, #b36bff)",
+      boxShadow: "0 0 25px rgba(105,85,255,0.4)",
+      animation: "floatUpDown 3s ease-in-out infinite",
     },
 
     profileImage: {
       width: "100%",
       height: "100%",
-      borderRadius: "50%",
+      borderRadius: "14px",
       objectFit: "cover",
     },
 
     heading: {
-      fontSize: "40px",
+      fontSize: "42px",
       fontWeight: "800",
-      marginBottom: "15px",
+      marginBottom: "20px",
       background: "linear-gradient(90deg, #7ef0ff, #ba7bff)",
       WebkitBackgroundClip: "text",
       color: "transparent",
@@ -49,7 +68,8 @@ export default function AboutSection() {
       fontSize: "17px",
       lineHeight: "1.8",
       color: "#d9e7ff",
-      marginBottom: "20px",
+      marginBottom: "18px",
+      animation: "fadeSlide 1.2s ease",
     },
 
     bullet: {
@@ -59,68 +79,86 @@ export default function AboutSection() {
 
     resumeButton: {
       marginTop: "25px",
-      padding: "12px 28px",
-      fontSize: "16px",
+      padding: "14px 32px",
+      fontSize: "17px",
       fontWeight: 700,
-      borderRadius: "30px",
+      borderRadius: "35px",
       textDecoration: "none",
       color: "white",
       background: "linear-gradient(90deg, #4b6bfb, #8a4dfc)",
       display: "inline-block",
-      boxShadow: "0 0 18px rgba(120,80,255,0.4)",
+      boxShadow: "0 0 22px rgba(120,80,255,0.5)",
+      transition: "0.3s",
     },
 
-    /* MOBILE RESPONSIVE */
-    mobile: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      textAlign: "center",
-      gap: "30px",
-    },
+    keyframes: `
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes fadeSlide {
+        from { opacity: 0; transform: translateX(40px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      @keyframes floatUpDown {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-12px); }
+      }
+    `,
   };
 
-  const isMobile = window.innerWidth <= 768;
-
   return (
-    <section id="about" style={styles.section}>
-      <div style={isMobile ? styles.mobile : styles.container}>
-        
-        {/* PROFILE IMAGE */}
-        <div style={styles.leftImageBox}>
-          <img src="/profile.jpeg" alt="Mounika" style={styles.profileImage} />
+    <>
+      <style>{styles.keyframes}</style>
+
+      <section id="about" style={styles.section}>
+        <div style={isMobile ? styles.mobile : styles.container}>
+          
+          {/* LEFT IMAGE */}
+          <div style={styles.leftImageBox}>
+            <img src="/profile.jpeg" alt="Mounika" style={styles.profileImage} />
+          </div>
+
+          {/* RIGHT TEXT */}
+          <div>
+            <h2 style={styles.heading}>About Me</h2>
+
+            <p style={styles.textBlock}>
+              Hello! I’m <strong>Mounika</strong>, a passionate 
+              <span style={styles.bullet}> Full Stack Developer</span> skilled in 
+              building clean, responsive and functional web applications.
+            </p>
+
+            <p style={styles.textBlock}>
+              I completed my <span style={styles.bullet}>MCA with 77.4%</span> and have 
+              hands-on experience from my internship at 
+              <span style={styles.bullet}> XCEL Corp</span>, where I worked with 
+              React.js, Bootstrap, Node.js and MongoDB.
+            </p>
+
+            <p style={styles.textBlock}>
+              <span style={styles.bullet}>Technical Skills:</span> HTML, CSS,
+              JavaScript, React.js, Node.js, Django, Python, MongoDB, PostgreSQL,
+              Git, GitHub, Bootstrap, SQL.
+            </p>
+
+            <p style={styles.textBlock}>
+              <span style={styles.bullet}>Projects:</span> BookEcho (Django), 
+              Village Community Hub (MERN), E-commerce Site (Java & SQL), 
+              Banking System (PHP), Organic Web Store (PHP & SQL).
+            </p>
+
+            <p style={styles.textBlock}>
+              I love transforming ideas into real working applications and 
+              continuously improving my development skills.
+            </p>
+
+            <a href="/Mounika_M_Resume.pdf" download style={styles.resumeButton}>
+              ⬇ Download Resume
+            </a>
+          </div>
         </div>
-
-        {/* RIGHT TEXT */}
-        <div>
-          <h2 style={styles.heading}>About Me</h2>
-
-          <p style={styles.textBlock}>
-            Hello! I’m <strong>Mounika</strong>, a passionate 
-            <span style={styles.bullet}> Full Stack Developer</span> who loves building 
-            clean, functional, and modern web applications.
-          </p>
-
-          <p style={styles.textBlock}>
-            I completed my MCA with 
-            <span style={styles.bullet}> 77.4%</span> and completed a full-stack 
-            internship at <span style={styles.bullet}>XCEL Corp</span>.
-          </p>
-
-          <p style={styles.textBlock}>
-            <span style={styles.bullet}>Technical Skills:</span> HTML, CSS,
-            JavaScript, React.js, Node.js, Django, Python, MongoDB, SQL, Git, GitHub.
-          </p>
-
-          <a
-            href="/Mounika_M_Resume.pdf"
-            download
-            style={styles.resumeButton}
-          >
-            ⬇ Download Resume fff
-          </a>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
